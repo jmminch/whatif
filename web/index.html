@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Imagine If...</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="client.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="login">
+    <div class="header">IMAGINE IF...</div>
+    <div class="login-field">
+      <label for="login-name">Name</label>
+      <input type="text" id="login-name">
+    </div>
+    <div class="login-field">
+      <label for="login-room">Room</label>
+      <input type="text" id="login-room">
+    </div>
+    <div style="width: 100%; text-align: center">
+      <button type="button" id="login-button">Log In</button>
+    </div>
+  </div>
+
+  <div id="lobby">
+    <div class="header">
+      IMAGINE IF...
+    </div>
+    <p id="lobby-myname"></p>
+    <div id="lobby-list-head"></div>
+    <div id="lobby-playerlist">
+    </div>
+    <button type="button" class="continue-button" id="lobby-start">Start
+      Game!</button>
+  </div>
+
+  <div id="countdown">
+    <div id="countdown-inner">
+      <div id="countdown-window">
+        <div>Next question in</div>
+        <div id="countdown-timer">3</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="answer">
+    <div class="question">
+      <span id="timer"></span>
+      <span id="answer-question"></span>
+    </div>
+    <div id="answer-list"></div>
+    <p id="answer-complete-text">Waiting to reveal results...</p>
+    <button type="button" class="continue-button" id="cr-button">
+      Reveal results</button>
+  </div>
+
+  <div id="results">
+    <div class="question" id="results-question">
+    </div>
+
+    <div id="results-answerlist">
+    </div>
+
+    <button type="button" class="continue-button" id="results-cont">Continue</button>
+  </div>
+
+  <div id="final">
+    <div class="header">
+      Final Results
+    </div>
+    <div id="final-player-list">
+    </div>
+    <button type="button" class="continue-button" id="final-cont">End Game</button>
+  </div>
+
+  <script type="text/javascript" src="client.js"></script>
+</body>
+</html>
