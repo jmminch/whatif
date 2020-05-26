@@ -131,13 +131,15 @@ class GameRoom {
        state != GameState.ConfirmResults) return;
 
     p.answerId = answerId;
+    p.state = PlayerState.active;
 
     /* If in the answer state, and all active players have responded, then
      * move immediately to the ConfirmResults state. */
     if(state == GameState.Answer) {
       bool checkin = true;
       players.values.forEach( (p) { 
-        if(p.state == PlayerState.active &&
+        if((p.state == PlayerState.active ||
+            p.state == PlayerState.disconnected) &&
            p.answerId == -1) checkin = false; } );
       if(checkin) answerTimerExpire();
     }
@@ -468,7 +470,19 @@ class GameRoom {
       player.roundScore = 0;
       if(player.answerId != null &&
          player.answerId >= 0 &&
-         player.answerId < votes.length) votes[player.answerId]++;
+         player.answerId < votes.length) {
+        votes[player.answerId]++;
+        player.missedQuestions = 0;
+      } else {
+        /* This player did not answer the question.  Increment the
+         * missedQuestions count for this player, and possibly switch
+         * them to idle state. */
+        player.missedQuestions++;
+        if(player.missedQuestions >= 2 ||
+           totalQuestions == 1) {
+          player.state = PlayerState.idle;
+        }
+      }
     });
 
     /* Now find the maximum number of votes and how many answers had that
@@ -589,6 +603,9 @@ class Player {
   /* Answer ID and score for current round. */
   int answerId = -1;
   int roundScore;
+
+  int missedQuestions = 0;
+    /* Number of questions in a row that this player hasn't answered. */
 
   Player( this.name );
 

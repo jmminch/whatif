@@ -34,6 +34,16 @@ document.getElementById("login-button").onclick = function (event) {
   ws.addEventListener("message", handleWsMessage);
 };
 
+document.getElementById("login-room").onkeyup = function (event) {
+  if(event.keyCode === 13) {
+    if(document.getElementById("login-name").value.length > 0 &&
+       document.getElementById("login-room").value.length > 0) {
+      event.preventDefault();
+      document.getElementById("login-button").click();
+    }
+  }
+};
+
 document.getElementById("lobby-start").onclick = function (event) {
   if(!ws) return;
   var msg = { event: "startGame" };
@@ -73,6 +83,8 @@ document.onclick = function(event) {
 
     /* Display the completion text. */
     document.getElementById("answer-complete-text").style.display = "block";
+
+    window.scrollTo(0, document.body.scrollHeight);
   }
 };
 
@@ -134,6 +146,9 @@ function handleStateMessage(msg) {
 
       if(msg.host) {
         document.getElementById("cr-button").style.display = "block";
+        /* Scroll to bottom so the presence of the "reveal results" button
+         * is obvious. */
+        window.scrollTo(0, document.body.scrollHeight);
       }
 
       if(answerTimer != null) {
@@ -245,6 +260,8 @@ function startAnswer(msg) {
 
     /* Display the completion text. */
     document.getElementById("answer-complete-text").style.display = "block";
+
+    window.scrollTo(0, document.body.scrollHeight);
   }
 }
 

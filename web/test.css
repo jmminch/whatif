@@ -47,11 +47,11 @@
   display: block;
 }
 
-#answer {
+#lobby {
   display: block;
 }
 
-#login, #lobby, #results, #final, #confirmfinal {
+#login, #answer, #results, #final {
   display: none;
 }
 

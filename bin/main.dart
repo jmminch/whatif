@@ -33,11 +33,10 @@ main() async {
   /* Return 404 for anything not matched. */
   app.fallback((req, res) => throw AngelHttpException.notFound());
 
-  /* Hardcoded to port 8080 for now. */
-  //await http.startServer('localhost', 8080);
-  await http.startServer('0.0.0.0', 8080);
+  /* Hardcoded to port 36912 for now. */
+  await http.startServer('0.0.0.0', 36912);
 
-  print("Listening on port 8080.");
+  print("Listening on port 36912.");
 }
 
 /* Strings coming from the client have the following restrictions:

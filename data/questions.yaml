@@ -163,17 +163,16 @@
     - Blow dryer
     - Zipper
 
-- question: >-
-    If ___ discovered a married friend were having an affair, what would
-    he/she do?
-  answers:
-    - Inform the friend's spouse
-    - Counsel the friend
-    - Nothing
-    - Gossip
-    - Warn the lover
-    - Try blackmail
-  tags: mature
+#- question: >-
+#    If ___ discovered a married friend were having an affair, what would
+#    he/she do?
+#  answers:
+#    - Inform the friend's spouse
+#    - Counsel the friend
+#    - Nothing
+#    - Gossip
+#    - Warn the lover
+#    - Try blackmail
 
 - question: >-
     If ___ could have one feature from a famous person, what would it be?
@@ -900,3 +899,620 @@
     - Ironing board
     - Bookcase
     - Water bed
+
+- question: If ___ were an era, which would he/she be?
+  answers:
+    - Biblical era
+    - Computer age
+    - Old West
+    - Decadent Rome
+    - Stone Age
+    - Victorian Era
+
+- question: If ___ could attend any sporting event, which would he/she choose?
+  answers:
+    - U.S. Masters
+    - Wimbledon
+    - Super Bowl
+    - Kentucky Derby
+    - World heavyweight boxing title fight
+    - Monte Carlo Grand Prix
+
+- question: If ___ spent a relaxing day alone, what would he/she do?
+  answers:
+    - Go shopping
+    - "Surf the 'net"
+    - Watch TV
+    - Meditate
+    - Enjoy the great outdoors
+    - Work on the tan
+
+- question: If ___ suffered from a phobia, which would it be?
+  answers:
+    - Ochlophobia (clowns)
+    - Arachnophobia (spiders)
+    - Triskaidekaphobia (thirteen)
+    - Mysophobia (dirt)
+    - Acrophobia (heights)
+    - Nyctophobia (darkness)
+
+- question: If ___ were to die of a mysterious death, what would it be?
+  answers:
+    - Abducted by aliens
+    - Choked to death on Jell-O
+    - Killed by a bear
+    - Poisoned by own cooking
+    - Electrocuted while changing a light bulb
+    - Tripping over shoelace
+
+- question: If ___ won an overseas trip, which country would he/she visit?
+  answers:
+    - Kenya
+    - Austria
+    - France
+    - Tahiti
+    - China
+    - Egypt
+
+- question: If ___ was a musical instrument, which would he/she be?
+  answers:
+    - Triangle
+    - Bagpipes
+    - Electric guitar
+    - Saxophone
+    - Violin
+    - Organ
+
+- question: >-
+    If ___ could invite a famous historical figure home for dinner,
+    whom would he/she invite?
+  answers:
+    - Mother Theresa
+    - Groucho Marx
+    - Richard Nixon
+    - Bill Gates
+    - Marilyn Monroe
+    - Muhammed Ali
+
+- question: >-
+    If ___ had to decide the best way to spend New Year's Eve, 1999,
+    what would he/she choose?
+  answers:
+    - Go to bed at 9PM with a nice cup of warm milk
+    - Spend the evening alone looking up at the stars and thinking
+    - A quiet celebration with the family
+    - Attend the ballet and thence to a cocktail party
+    - Go to a wild party and pass out at 11:59 PM
+    - Sit by the computer to witness the effect of the millennium bug.
+
+- question: If ___ were an animal sound, which would he/she be?
+  answers:
+    - Meow
+    - Moo
+    - Roar
+    - Gobble
+    - Hiss
+    - Hoot
+
+- question: If ___ were a body of water, which would he/she be?
+  answers:
+    - A puddle
+    - An Olympic-sized swimming pool
+    - An ice cube
+    - A Roman bath
+    - A wilderness lake
+    - An ocean
+
+- question: If ___ were a dessert, which would he/she be?
+  answers:
+    - Fresh fruit
+    - Port and cigars
+    - Cheese and coffee
+    - Banana split
+    - Brandied kumquats
+    - Jell-O
+
+- question: If ___ were a plant, which would he/she be?
+  answers:
+    - Towering oak tree
+    - Kudzu
+    - Venus fly trap
+    - Red rose
+    - Ragweed
+    - Dried flower
+
+- question: If ___ were a board game, which would he/she be?
+  answers:
+    - Monopoly
+    - Scrabble
+    - Twister
+    - iMAgiNiff...
+    - Chess
+    - Candy Land
+
+- question: If ___ had an office plant, what kind would he/she have?
+  answers:
+    - Bonsai
+    - Tropical
+    - Fungus
+    - A dead one
+    - Cactus
+    - Plastic
+
+- question: If ___ were a cable channel, which would he/she be?
+  answers:
+    - Comedy Central
+      # - Playboy Channel
+    - CNN
+    - The Discovery Channel
+    - ESPN
+    - SyFy Channel
+
+- question: If ___ were something to sit on, which would he/she be?
+  answers:
+    - Throne
+    - Bar stool
+    - Rocking chair
+    - Electric chair
+    - Park bench
+    - Toilet
+
+- question: If ___ were a musical style, which would he/she be?
+  answers:
+    - Classical
+    - Rap
+    - "Rock 'n roll"
+    - Disco
+    - Jazz
+    - Country and Western
+
+- question: If ___ were a form of advertisement, which would he/she be?
+  answers:
+    - Magazine ad
+    - Endorsement by a sports star
+    - Radio ad
+    - Roadside billboard
+    - Sky writing
+      # - Internet ad
+    - Spam e-mail
+
+- question: >-
+    If ___ had the deciding vote for an Oscar for the best actress, who
+    would he/she choose?
+  answers:
+    - Kathryn Hepburn
+    - Pamela Anderson
+    - Demi Moore
+    - Sharon Stone
+    - Elizabeth Taylor
+    - Marge Simpson
+
+- question: If ___ were a singer, who would he/she be?
+  answers:
+    - Julio Iglesias
+    - Placido Domingo
+    - The Artist Formerly Known as Prince
+    - Dolly Parton
+    - Alice Cooper
+    - Julie Andrews
+
+- question: If ___ were a cliché, which would he/she be?
+  answers:
+    - Wolf in sheep's clothing
+    - Born with a silver spoon in the mouth
+    - Burning the candle at both ends
+    - At one with nature
+    - Look what the cat dragged in
+    - A sight for sore eyes
+
+- question: >-
+    If ___ were on a 10-hour car trip, which would upset him/her the most?
+  answers:
+    - Being stuck behind a little old lady travelling at 30 MPH
+    - Running over a bunny rabbit
+    - Children fighting in the back seat
+    - A small scratch on the paint work
+    - Sound system breaks down
+    - Mobile phone goes out of range
+
+- question: If ___ were sporting equipment, which would he/she be?
+  answers:
+    - Bowling pin
+    - Hockey puck
+    - Putter
+    - Javelin
+    - Shoulder pads
+    - Mouth guard
+
+- question: If ___ were a book, which would he/she be?
+  answers:
+    - How to Win Friends and Influence People
+    - Alice in Wonderland
+    - A Brief History of Time
+    - Lady Chatterley's Lover
+    - The Shining
+    - The Bible
+
+- question: If ___ were thirsty, which would he/she prefer to drink?
+  answers:
+    - Beer
+    - Mineral water
+    - Piña colada
+    - Orange juice
+    - Cola
+    - 1954 Chateaux Lafitte Rothschild
+
+- question: If ___ were a dance, which would he/she be?
+  answers:
+    - Tango
+    - Square
+    - Waltz
+    - Break
+    - Disco
+    - Polka
+
+- question: If ___ were a superhero, who would he/she be?
+  answers:
+    - Superman
+    - The Incredible Hulk
+    - The Phantom
+    - Aqua Man
+    - Batman
+    - Wonder Woman
+
+- question: If ___ bought a newspaper, which would he/she read first?
+  answers:
+    - Personals
+    - Financial section
+    - Sports
+    - Comics
+    - Obituaries
+    - Want ads
+
+- question: If ___ were a world record, which would he/she be?
+  answers:
+    - The world's largest piggy bank
+    - The world's longest sausage
+    - The world's largest ball of twine
+    - Juggling the most objects while running
+    - The world's hottest chili pepper
+    - The world's most dense substance
+
+- question: If ___ were a room, which would he/she be?
+  answers:
+    - Study
+    - Kitchen
+    - Wine cellar
+    - Bedroom
+    - Bathroom
+    - Darkroom
+
+- question: >-
+    If ___ had to decide which of the following events most concerned
+    him/her, which would he/she choose?
+  answers:
+    - Beatles break-up
+    - Soup getting cold
+    - Michael Jordan quitting basketball
+    - Michael Jackson's hair catching fire
+    - 1987 stock market crash
+    - The Exxon-Valdez oil spill
+
+- question: If ___ were a type of confection, which would he/she be?
+  answers:
+    - M&M's
+    - Gum
+    - Cotton candy
+    - Breath mint
+    - Chocolate liqueur
+    - Jelly bean
+
+- question: If ___ had to select a way of dying, which would he/she choose?
+  answers:
+    - Peacefully in sleep
+    - Hit by a golf ball
+    - Fighting in a war
+    - Murdered by a jealous lover
+    - TV falls into bubble bath
+    - Overeating
+
+- question: If ___ were a historic disaster, which would he/she be?
+  answers:
+    - Sinking of the Titanic
+    - Bubonic Plague
+    - Crash of the Hindenburg
+    - Stock market crash
+    - Noah's flood
+    - Eruption of Mount St. Helens
+
+- question: >-
+    If ___ were to be honored, which of the following would he/she be
+    happiest to accept?
+  answers:
+    - A papel blessing
+    - Cornerstone on a community center
+    - Good Housekeeping seal of approval
+    - Life review on 60 Minutes
+    - Cash award
+    - A race horse named after him/her
+
+- question: If ___ were a 1990's movie, which would it be?
+  answers:
+    - Independence Day
+    - Pulp Fiction
+    - The English Patient
+    - Forrest Gump
+    - Pretty Woman
+    - There's Something About Mary
+
+- question: >-
+    If ___ were going on a picnic, which would he/she consider essential?
+  answers:
+    - Sandwich and coffee
+    - Champagne and caviar
+    - Laptop and mobile phone
+    - Loud radio
+    - A bat and ball
+    - A good book
+
+- question: If ___ were a 1960's movie, which would he/she be?
+  answers:
+    - Barbarella
+    - The Sound of Music
+    - 2001 - A Space Odyssey
+    - Goldfinger
+    - Psycho
+    - Dr. Zhivago
+
+- question: If ___ were an author, what type of books would he/she write?
+  answers:
+    - Children's
+    - Science fiction
+    - Romance
+    - Thriller
+    - Whodunits
+    - Basket-weaving textbooks
+
+- question: If ___ belonged to a a TV family, which would it be?
+  answers:
+    - The Simpsons
+    - The Ewings
+    - The Brady Bunch
+    - The Cartwrights
+    - The Flintstones
+    - The Addams Family
+
+- question: If ___ were an entrée, which would he/she be?
+  answers:
+    - Big Mac
+    - Duck à l'orange
+    - Spaghetti and meatballs
+    - Stuffed turkey
+    - Canned ham
+    - Buffalo wings
+
+- question: >-
+    If ___ had time to do only one of the following every morning, which
+    would he/she choose?
+  answers:
+    - Exercise
+    - Read the newspaper
+    - Eat a big breakfast
+    - Meditate
+    - Have a massage
+    - Play with the children
+
+- question: If ___ were a monster, which would he/she be?
+  answers:
+    - Dracula
+    - The Blob
+    - Frankenstein
+    - Werewolf
+    - Dr. Jekyll and Mr. Hyde
+    - Cookie Monster
+
+- question: If ___ were a sports penalty, what would he/she be?
+  answers:
+    - Hooking
+    - Balk
+    - Hitting below the belt
+    - Charging
+    - Clipping
+    - Unsportsmanlike conduct
+
+- question: If ___ were the subject of a photograph, what form would it take?
+  answers:
+    - Police mug shot
+    - Pulling a funny face
+    - Bikini-clad
+    - Sporting pose
+    - Seated, formally dressed
+    - Cover of The Enquirer
+
+- question: If ___ were a toy, which would he/she be?
+  answers:
+    - Barbie doll
+    - Chemistry set
+    - Teddy bear
+    - Magic set
+    - Transformers
+    - Play-Doh
+
+- question: >-
+    If ___ awoke to find the house in flames, which would he/she save first?
+  answers:
+    - Insurance policy
+    - Favorite shoes
+    - Family photos
+    - Cash
+    - Self portrait
+    - Sports equipment
+
+- question: >-
+    If ___ accidentally emitted an unpleasant anti-social noise at a dinner
+    party, what would he/she do?
+  answers:
+    - Say nothing and blush brightly
+    - Apologize
+    - Laugh and repeat the offense (louder, if possible)
+    - Blame the person sitting next to him/her
+    - Try to re-produce the sound by shifting in his/her seat
+    - Carry on as if nothing happened
+
+- question: If ___ was an Olympic event, which would he/she be?
+  answers:
+    - 100 meter sprint
+    - Boxing
+    - Beach volleyball
+    - Weightlifting
+    - Luge
+    - Marathon
+
+- question: If ___ were an article of clothing, which would he/she be?
+  answers:
+    - Pin-striped suit
+    - Prison uniform
+    - Pajamas
+    - Sweat pants
+    - Faded jeans
+    - Mini skirt
+
+- question: If ___ were a cartoon character, who would he/she be?
+  answers:
+    - George Jetson
+    - Wile E. Coyote
+    - Daffy Duck
+    - Tweety Bird
+    - Underdog
+    - Homer Simpson
+
+- question: If ___ were a form of communication, which would he/she be?
+  answers:
+    - Telephone
+    - Mental telepathy
+    - Body language
+    - E-mail
+    - Car horn
+    - Smoke signal
+
+
+- question: If ___ were a comic strip character, who would he/she be?
+  answers:
+    - Dilbert
+    - Blondie
+    - Dennis the Menace
+    - Popeye
+    - Hagar the Horrible
+    - Andy Capp
+
+- question: If ___ were a musician, which would he/she be?
+  answers:
+    - Liberace
+    - Weird Al Yankovic
+    - Snoop Doggy Dog
+    - Jimi Hendrix
+    - Madonna
+    - Billy Joel
+
+- question: If ___'s doctor suggested more exercise, which would he/she do?
+  answers:
+    - Triathlon
+    - Pump iron
+    - Power walk
+    - Yoga
+    - Disco aerobics
+    - Seek a second opinion
+
+- question: If ___ could go on a dream vacation, which would it be?
+  answers:
+    - Disney World
+    - Luxury cruise
+    - Visit the world's great museums
+    - African hunting safari
+    - Work aorund the house
+    - Spend all day every day surfing the internet
+
+- question: >-
+    If ___ accidentally backed over the neighbor's cat in the driveway,
+    which would he/she do?
+  answers:
+    - Bury it and say nothing
+    - Confess
+    - Buy a replacement and pretend nothing happened
+    - Place it on the road and say nothing
+    - Blame the neighbor for inadequate cat control
+    - Run over it again to make sure it was dead
+
+- question: If ___ were an emotion, which would he/she be?
+  answers:
+    - Hate
+    - Fear
+    - Jealousy
+    - Rage
+    - Lust
+    - Love
+
+- question: If ___ were a special vehicle, which would he/she be?
+  answers:
+    - Tank
+    - Ambulance
+    - Parade float
+    - Garbage truck
+    - Ice cream truck
+    - Limousine
+
+- question: If ___ were a superlative, which would he/she be?
+  answers:
+    - Easiest
+    - Cheesiest
+    - Smoothest
+    - Sleepiest
+    - Goofiest
+    - Sweetest
+
+- question: If ___'s personality were a male nickname, which would be best?
+  answers:
+    - Romeo
+    - Marvin
+    - Conan
+    - Todd
+    - Jeremiah
+    - Elvis
+
+- question: If ___ were a timepiece, which would he/she be?
+  answers:
+    - Stopwatch
+    - Biological clock
+    - Grandfather clock
+    - Oven timer
+    - Sundial
+    - Time bomb
+
+- question: If ___ were an Olympic site, which would he/she be?
+  answers:
+    - Barcelona
+    - Los Angeles
+    - Berlin
+    - Ancient Athens
+    - Mexico City
+    - Lake Placid
+
+- question: >-
+    If ___ could travel in a time machine, which event would he/she choose
+    to witness?
+  answers:
+    - The Rumble in the Jungle (Ali vs. Foreman - Zaire - 1974)
+    - The apple falling on Newton's head
+    - Moses parting the Red Sea
+    - Elvis' first live performance
+    - His/her own birth
+    - Next year's Kentucky Derby
+
+- question: If ___'s personality were a female name, which would be best?
+  answers:
+    - Mary Lou
+    - Helga
+    - Brigitte
+    - Xena
+    - Bubbles
+    - Prudence
