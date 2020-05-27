@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Imagine If...</title>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="test.css">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="countdown">
-    <div id="countdown-inner">
-      <div id="countdown-window">
-        <div>Next question in</div>
-        <div id="countdown-timer">3</div>
-      </div>
-    </div>
-  </div>
-
   <div id="login">
     <div class="header">IMAGINE IF...</div>
     <div class="login-field">
@@ -30,41 +23,33 @@
     </div>
   </div>
 
+  <div id="countdown">
+    <div id="countdown-inner">
+      <div id="countdown-window">
+        <div>Next question in</div>
+        <div id="countdown-timer">3</div>
+      </div>
+    </div>
+  </div>
+
   <div id="lobby">
     <div class="header">
       IMAGINE IF...
     </div>
-    <p id="lobby-myname">Logged in as JARED</p>
-    <div id="lobby-list-head">Room code: MINCH</div>
+    <p id="lobby-myname"></p>
+    <div id="lobby-list-head"></div>
     <div id="lobby-playerlist">
-      <span class="player-card">JARED</span>
-      <span class="player-card">TAMMY</span>
-      <span class="player-card">NOBODY</span>
     </div>
     <button type="button" class="continue-button" id="lobby-start">Start
       Game!</button>
   </div>
 
   <div id="answer">
-    <div class="question" id="answer-question">
-      <span id="timer">:26</span>
-      If BOZO were a clown, which would he be? And what would his
-      signature act be?
+    <div class="question">
+      <span id="timer"></span>
+      <span id="answer-question"></span>
     </div>
-    <div id="answer-list">
-      <button class="answer-button" id="answer0">
-        Donald Trump
-      </button>
-      <button class="answer-button" id="answer1">
-        Jerry Seinfeld
-      </button>
-      <button class="answer-button" id="answer2">
-        The Mad Hatter
-      </button>
-      <button class="answer-button" id="answer3">
-        The Not-So-Mad Hatter
-      </button>
-    </div>
+    <div id="answer-list"></div>
     <p id="answer-complete-text">Waiting to reveal results...</p>
     <button type="button" class="continue-button" id="cr-button">
       Reveal results</button>
@@ -72,51 +57,15 @@
 
   <div id="results">
     <div class="question" id="results-question">
-      If BOZO were a clown, which would he be? And what would his
-      signature act be?
     </div>
 
     <div id="results-answerlist">
-      <div class="results-answer" id="answer0">
-        <div class="results-winning-answer">
-          Donald Trump
-        </div>
+      <div class="results-answer">
+        <div class="results-losing-answer">The answer to life</div>
         <div class="results-player-line">
-          <span class="results-score">+1000</span>
-          <span class="player-card">JARED</span>
-          <span class="player-card">TAMMY</span>
-          <span class="player-card">NOBODY</span>
-        </div>
+          <span class="player-card">MEGA MAN <span
+              class="player-penalty">-500</span></span></div>
       </div>
-
-      <div class="results-answer" id="answer0">
-        <div class="results-losing-answer">
-          Jerry Seinfeld
-        </div>
-        <div class="results-player-line">
-          <span class="player-card">JARED</span>
-          <span class="player-card">TAMMY</span>
-          <span class="player-card">NOBODY</span>
-          <span class="player-card">DOES</span>
-          <span class="player-card">IT</span>
-          <span class="player-card">BETTER</span>
-          <span class="player-card">THAN</span>
-          <span class="player-card">TOM PEABODY</span>
-        </div>
-      </div>
-
-      <div class="results-answer" id="answer0">
-        <div class="results-losing-answer">
-          The Mad Hatter
-        </div>
-      </div>
-
-      <div class="results-answer" id="answer0">
-        <div class="results-losing-answer">
-          The Not-So-Mad Hatter
-        </div>
-      </div>
-
     </div>
 
     <button type="button" class="continue-button" id="results-cont">Continue</button>
@@ -128,21 +77,20 @@
     </div>
     <div id="final-player-list">
       <div class="final-player-line">
-        <span class="player-name">JARED</span>
-        <span class="player-score">12000 pts</span>
+        <span class="player-name">YOU</span>
+        <span class="player-score">21,950 pts</span>
       </div>
       <div class="final-player-line">
-        <span class="player-name">TAMMY</span>
-        <span class="player-score">8000 pts</span>
+        <span class="player-name">REALLYWHOWOULDDOTHIS?YOUWOULD.
+          HUH.</span>
+        <span class="player-score">21,950 pts</span>
       </div>
       <div class="final-player-line">
-        <span class="player-name">NOBODY</span>
-        <span class="player-score">17 pts</span>
+        <span class="player-name">ME</span>
+        <span class="player-score">21,950 pts</span>
       </div>
     </div>
     <button type="button" class="continue-button" id="final-cont">End Game</button>
   </div>
-
-  <script type="text/javascript" src="test.js"></script>
 </body>
 </html>

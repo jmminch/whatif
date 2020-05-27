@@ -213,6 +213,8 @@
   margin: 10px;
   border-radius: 4px;
   font-size: 32px;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .player-name {

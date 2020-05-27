@@ -14,8 +14,9 @@ document.getElementById("login-button").onclick = function (event) {
   }
 
   // Create websocket connection when login is pressed.
-  ws = new WebSocket('ws://' + location.hostname +
-      (location.port ?  ':' + location.port : '') + '/ws');
+  ws = new WebSocket(
+        (location.protocol === "https:" ? "wss://" : "ws://") +
+        location.host + "/ws");
 
   // Wait for websocket connection to send login.
   ws.onopen = function(event) {
@@ -106,13 +107,16 @@ function handleWsMessage(event) {
   } else {
     if(obj.eventName == "state") {
       handleStateMessage(JSON.parse(obj.data));
+    } else if(obj.eventName == "ping") {
+      var msg = { event: "pong" };
+      ws.send(JSON.stringify(msg));
     }
   }
 }
 
 function handleStateMessage(msg) {
   switch(msg.state) {
-    case "waitstart":
+    case "lobby":
       var playerList = "";
       msg.players.forEach(function(p) {
         playerList += "<span class=\"player-card\">" + p +
@@ -338,7 +342,7 @@ function createFinalResultList(msg) {
   msg.results.forEach(function(r) {
     resultList +=
       "<div class=\"final-player-line\"><span class=\"player-name\">" +
-      r[0] + "</span><span class=\"player-score\">" + r[1] +
+      r[0] + "</span><span class=\"player-score\">" + r[1].toLocaleString() +
       " pts</span></div>";
   });
   document.getElementById("final-player-list").innerHTML = resultList;

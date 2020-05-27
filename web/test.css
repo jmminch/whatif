@@ -15,11 +15,12 @@
 .header {
   position: sticky;
   top: 0;
-  width: calc(100% - 40px);
+  /* width: calc(100% - 40px); */
+  width: 100%;
   background-color: #379683;
   color: #fdf6e3;
   font-size: 48px;
-  padding: 10px 20px;
+  padding: 10px 0px;
   font-weight: bold;
   text-align: center;
 }
@@ -47,11 +48,11 @@
   display: block;
 }
 
-#lobby {
+#results {
   display: block;
 }
 
-#login, #answer, #results, #final {
+#login, #lobby, #answer, #final {
   display: none;
 }
 
@@ -66,13 +67,14 @@
 .login-field input {
   font-size: 24px;
   margin-left: 50px;
+  width: 200px;
 }
 
 #login-button {
   color: black;
   font-size: 24px;
   background-color: #f2f2f2;
-  width: 30%;
+  width: 120px;
   padding: 5px 20px;
   margin: 10px;
   border-radius: 10px;
@@ -101,7 +103,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   z-index: 1;
-  visibility: visible;
+  visibility: hidden;
 
   flex-direction: column;
   justify-content: center;
@@ -147,21 +149,10 @@
   margin: 10px;
   border-radius: 10px;
   display: block;
-}
-
-.answer-button {
-  color: black;
-  font-size: 24px;
-  background-color: #EDF5A1;
-  width: calc(100% - 30px);
-  padding: 5px 20px;
-  margin: 10px;
-  border-radius: 10px;
-  display: block;
   transition: all 0.3s ease;
 }
 
-.answer-button-disabled {
+.answer-button:disabled {
   background-color: #bbb;
   color: #555;
 }
@@ -209,6 +200,15 @@
   font-weight: bold;
 }
 
+.player-penalty {
+  background-color: #c13b23;
+  color: #fdf6e3;
+  padding: 3px 3px;
+  margin: 2px 5px;
+  border-radius: 5px;
+}
+
+
 .results-score {
   color: #379683;
   float: right;
@@ -222,6 +222,8 @@
   margin: 10px;
   border-radius: 4px;
   font-size: 32px;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .player-name {

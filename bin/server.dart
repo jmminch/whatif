@@ -81,12 +81,6 @@ class GameRoom {
     /* If there is currently no host, then make this player the host. */
     if(host == null) host = p;
 
-    /* Every time a player is added, notify all players of the player list. */
-    var playerList = new List<String>();
-    players.forEach((name, v) => playerList.add(name));
-
-    notifyAll("players", jsonEncode(playerList));
-
     if(state == GameState.Lobby) broadcastState();
   }
 
@@ -117,13 +111,6 @@ class GameRoom {
 
   /* TODO: need an end game option. */
 
-  answerTimerExpire( ) {
-    if(answerTimer != null &&
-       answerTimer.isActive) answerTimer.cancel();
-    answerTimer = null;
-    changeState(GameState.ConfirmResults);
-  }
-
   doSelectAnswer( Player p, int answerId ) {
     /* Allow players to submit answers until the results are going to be 
      * revealed. */
@@ -131,7 +118,6 @@ class GameRoom {
        state != GameState.ConfirmResults) return;
 
     p.answerId = answerId;
-    p.state = PlayerState.active;
 
     /* If in the answer state, and all active players have responded, then
      * move immediately to the ConfirmResults state. */
@@ -217,8 +203,7 @@ class GameRoom {
 
       case GameState.RoundSetup:
         /* Pick target players, etc. */
-        setupRound();
-        changeState(GameState.Countdown);
+        roundSetup();
         break;
 
       case GameState.Countdown:
@@ -232,32 +217,7 @@ class GameRoom {
         break;
 
       case GameState.Answer:
-        /* Let any waiting players into the game. */
-        players.values.forEach((p) {
-          if(p.state == PlayerState.pending)
-            p.state = PlayerState.active; });
-
-        /* Update counters of questions played. */
-        roundQuestions++;
-        totalQuestions++;
-
-        /* Start timer.  Should give a slight grace period so the server
-         * timer doesn't expire before the clients. */
-        var answerTimeout = new Duration(seconds: 31);
-        answerTime = new DateTime.now().add(answerTimeout);
-        answerTimer = new Timer(answerTimeout, answerTimerExpire);
-
-        /* Pick a target, randomly for now. */
-        currentTarget = targets.removeLast();
-
-        /* Pick a random question */
-        currentQuestion = questions.nextQuestion();
-
-        /* Set up structures to wait for responses. */
-        players.values.forEach( (p) { p.answerId = -1; } );
-
-        /* Notify all players of question and choices. */
-        broadcastState();
+        answer();
         break;
 
       case GameState.ConfirmResults:
@@ -338,15 +298,15 @@ class GameRoom {
   }
 
   Map buildLobbyStateMsg( ) {
-    /* WaitStart message contains:
-     *   state = "waitstart"
+    /* lobby message contains:
+     *   state = "lobby"
      *   players = [ playerlist ]
      *   host = true/false  -- TODO
      */
     var msgMap = new Map<String, dynamic>();
-    msgMap["state"] = "waitstart";
-    var playerList = new List<String>();
-    players.forEach((name, v) => playerList.add(name));
+    msgMap["state"] = "lobby";
+    var playerList = players.values.where((p) => 
+        (p.state != PlayerState.disconnected)).map((p) => (p.name)).toList();
     msgMap["players"] = playerList;
 
     return msgMap;
@@ -451,13 +411,59 @@ class GameRoom {
     return msgMap;
   }
 
-  setupRound( ) {
+  /* Functions that handle the transition into a particular state. */
+  roundSetup( ) {
+    /* Reset the number of questions asked in this round. */
     roundQuestions = 0;
 
+    /* Create a shuffled list of active players to use as the question
+     * targets. */
     targets = new List<Player>.from(players.values);
     /* Select active players only. */
     targets = targets.where((p) => (p.state == PlayerState.active)).toList();
     targets.shuffle();
+
+    /* Immediately switch to the countdown. */
+    changeState(GameState.Countdown);
+  }
+
+  answer( ) {
+    /* Let any waiting players into the game. */
+    players.values.forEach((p) {
+      if(p.state == PlayerState.pending)
+        p.state = PlayerState.active; });
+
+    /* Update counters of questions played. */
+    roundQuestions++;
+    totalQuestions++;
+
+    /* Start timer. */
+    var answerTimeout = new Duration(seconds: 31);
+    answerTime = new DateTime.now().add(answerTimeout);
+    answerTimer = new Timer(answerTimeout, answerTimerExpire);
+
+    /* Pick a target by removing one from the pre-populated targets list. */
+    currentTarget = targets.removeLast();
+
+    /* Pick a random question. */
+    currentQuestion = questions.nextQuestion();
+
+    /* Set up structures to wait for responses. */
+    players.values.forEach( (p) => (p.answerId = -1) );
+
+    /* Notify all players of question and choices. */
+    broadcastState();
+  }
+
+  /* Called either when the 30-second question timer expires or all
+   * active players have checked in. */
+  answerTimerExpire( ) {
+    /* Need to cancel the timer if this was called early. */
+    if(answerTimer != null &&
+       answerTimer.isActive) answerTimer.cancel();
+
+    answerTimer = null;
+    changeState(GameState.ConfirmResults);
   }
 
   /* Calculate the scores for one question. */
@@ -478,8 +484,9 @@ class GameRoom {
          * missedQuestions count for this player, and possibly switch
          * them to idle state. */
         player.missedQuestions++;
-        if(player.missedQuestions >= 2 ||
-           totalQuestions == 1) {
+        if(player.state == PlayerState.active &&
+            (player.missedQuestions >= 2 ||
+             totalQuestions == 1)) {
           player.state = PlayerState.idle;
         }
       }
@@ -556,14 +563,14 @@ class GameRoom {
   connectPlayer( Player p ) {
     switch(p.state) {
       case PlayerState.pending:
-        /* Normal case for a new player.  In the WaitStart state, then change
+        /* Normal case for a new player.  In the lobby state, then change
          * to active immediately.  Otherwise, state remains pending until
          * starting a new question or returning to the lobby. */
         if(state == GameState.Lobby) p.state = PlayerState.active;
         break;
 
-      case PlayerState.disconnected:
-        /* Player was disconnected.  They can be made active again
+      default:
+        /* Otherwise, the player was disconnected; let them back in
          * immediately. */
         p.state = PlayerState.active;
         break;
@@ -575,6 +582,7 @@ class GameRoom {
   disconnectPlayer( Player p ) {
     print("Disconnected player ${p.name}");
     p.state = PlayerState.disconnected;
+    if(state == GameState.Lobby) broadcastState();
   }
 }
 
@@ -595,10 +603,13 @@ enum PlayerState {
 
 class Player {
   String name;
-  WebSocketContext socket;
   GameRoom room;
   PlayerState state = PlayerState.pending;
   int score = 0;
+
+  WebSocketContext socket;
+  Timer pingTimer;
+  int missedPing = 0;
 
   /* Answer ID and score for current round. */
   int answerId = -1;
@@ -620,7 +631,38 @@ class Player {
     socket.onClose.listen((_) => disconnect());
 
     room.connectPlayer(this);
+
+    new Timer(new Duration(seconds: 30), () => ping(s));
+    missedPing = 1;
   }
+
+  /* Ping the player every 30 seconds.  This keeps the connection alive, and
+   * also lets us detect when the player disconnects.
+   * After missing a ping, try once more with a 5-second timeout, and if
+   * that fails too then close the socket and disconnect the player. */
+  ping(s) {
+    if(socket != s) return;
+
+    missedPing++;
+
+    if(missedPing >= 3) {
+      /* Missed two pings in succession; disconnect. */
+      print("Disconnecting due to missing pings.");
+      socket.close();
+      disconnect();
+      return;
+    }
+
+    sendMsg("ping", "ping");
+
+    if(missedPing == 2) {
+      new Timer(new Duration(seconds: 5), () => ping(s));
+    } else {
+      /* missedPing == 1; normal case */
+      new Timer(new Duration(seconds: 30), () => ping(s));
+    }
+  }
+
 
   disconnect( ) {
     print("socket disconnected.");
@@ -629,7 +671,9 @@ class Player {
   }
 
   handleMessage( Map msg ) {
-    socket.send("info", "handling message ${msg["event"]}");
+    if(msg["event"] != "pong" && state == PlayerState.idle) {
+      state = PlayerState.active;
+    }
 
     switch(msg["event"]) {
       case "startGame":
@@ -650,6 +694,10 @@ class Player {
 
       case "answer":
         room.doSelectAnswer(this, msg["id"]);
+        break;
+
+      case "pong":
+        missedPing = 0;
         break;
     }
   }
