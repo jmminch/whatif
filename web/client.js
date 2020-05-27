@@ -282,6 +282,15 @@ function createResultList(msg) {
        r[1] >= 0 &&
        r[1] < msg.answers.length) {
       results[r[1]].push(r[0]);
+
+      /* This is hokey -- if this player was penalized, then stick the HTML
+       * for the penalty into the player name, and it will get inserted in
+       * the right place. */
+      if(r[2] < 0) {
+        results[r[1]][results[r[1]].length - 1] +=
+          " <span class=\"player-penalty\">" + r[2].toString() + "</span>"
+      }
+
       if(r[2] > 0) results[r[1]][1] = r[2];
     } else {
       noanswer.push(r[0]);

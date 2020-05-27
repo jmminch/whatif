@@ -124,9 +124,16 @@ class GameRoom {
     if(state == GameState.Answer) {
       bool checkin = true;
       players.values.forEach( (p) { 
-        if((p.state == PlayerState.active ||
-            p.state == PlayerState.disconnected) &&
-           p.answerId == -1) checkin = false; } );
+        /* Make sure that all players that are active, or are disconnected
+         * but haven't missed a question yet, have responded. */
+        if(p.answerId == -1 &&
+           (p.state == PlayerState.active ||
+            (p.state == PlayerState.disconnected &&
+             p.missedQuestions == 0))) {
+          checkin = false;
+        } 
+      });
+
       if(checkin) answerTimerExpire();
     }
   }
@@ -359,7 +366,7 @@ class GameRoom {
      * who provided an answer. */
     var playerList = players.values.where((p) => 
             (p.state == PlayerState.active ||
-             p.state == PlayerState.disconnected ||
+             (p.state == PlayerState.disconnected && p.missedQuestions < 2) ||
              (p.answerId >= 0 &&
               p.answerId < currentQuestion.answers.length))).toList();
 
@@ -663,7 +670,6 @@ class Player {
     }
   }
 
-
   disconnect( ) {
     print("socket disconnected.");
     socket = null;
@@ -671,8 +677,9 @@ class Player {
   }
 
   handleMessage( Map msg ) {
-    if(msg["event"] != "pong" && state == PlayerState.idle) {
-      state = PlayerState.active;
+    if(msg["event"] != "pong") {
+      missedQuestions = 0;
+      if(state == PlayerState.idle) state = PlayerState.active;
     }
 
     switch(msg["event"]) {

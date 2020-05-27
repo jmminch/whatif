@@ -200,6 +200,15 @@
   font-weight: bold;
 }
 
+.player-penalty {
+  background-color: #c13b23;
+  color: #fdf6e3;
+  padding: 3px 3px;
+  margin: 2px 5px;
+  border-radius: 5px;
+}
+
+
 .results-score {
   color: #379683;
   float: right;
