@@ -228,8 +228,7 @@ function startAnswer(msg) {
   var answerList = "";
   for(var i = 0; i < msg.answers.length; i++) {
     answerList +=
-      "<button class=\"answer-button\" id=\"answer" + i + "\">" + 
-      msg.answers[i] + "</button>";
+      `<button class="answer-button" id="answer${i}">${msg.answers[i]}</button>`;
   }
   document.getElementById("answer-list").innerHTML = answerList;
 
@@ -306,27 +305,27 @@ function createResultList(msg) {
 
   results.forEach(function(r) {
 
-    resultList += "<div class=\"results-answer\">" +
-                  "<div class=\"results-" + (r[1] > 0 ? "winning" : "losing") +
-                  "-answer\">" + r.shift() + "</div>" +
-                  "<div class=\"results-player-line\">";
+    resultList += '<div class="results-answer">' +
+                  '<div class="results-'+ (r[1] > 0 ? "winning" : "losing") +
+                  '-answer">' + r.shift() +
+                  '</div><div class="results-player-line">';
 
     var score = r.shift();
     if(score > 0)
-      resultList += "<span class=\"results-score\">+" + score + "</span>";
+      resultList += `<span class="results-score">+${score}</span>`;
     r.forEach((s) =>
-      resultList += "<span class=\"player-card\">" + s + "</span>");
+      resultList += `<span class="player-card">${s}</span>`);
     resultList += "</div></div>";
   });
 
   if(noanswer.length > 0) {
-    resultList += "<div class=\"results-answer\">" +
-                  "<div class=\"results-losing-answer\">" +
-                  "No answer</div>" +
-                  "<div class=\"results-player-line\">";
+    resultList += '<div class="results-answer">' +
+                  '<div class="results-losing-answer">' +
+                  'No answer</div>' +
+                  '<div class="results-player-line">';
     noanswer.forEach((s) =>
-      resultList += "<span class=\"player-card\">" + s + "</span>");
-    resultList += "</div></div>";
+      resultList += `<span class="player-card">${s}</span>`);
+    resultList += '</div></div>';
   }
 
   document.getElementById("results-answerlist").innerHTML = resultList;
@@ -350,9 +349,9 @@ function createFinalResultList(msg) {
   msg.results.sort((a,b) => b[1] - a[1]);
   msg.results.forEach(function(r) {
     resultList +=
-      "<div class=\"final-player-line\"><span class=\"player-name\">" +
-      r[0] + "</span><span class=\"player-score\">" + r[1].toLocaleString() +
-      " pts</span></div>";
+      '<div class="final-player-line">' +
+      `<span class="player-name">${r[0]}</span>` +
+      `<span class="player-score">${r[1].toLocaleString()} pts</span></div>`;
   });
   document.getElementById("final-player-list").innerHTML = resultList;
 

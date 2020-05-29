@@ -15,25 +15,77 @@ class GameServerClass {
     questionList = new QuestionList.fromFile("./data/questions.json");
   }
 
-  Player addPlayer( String name, String room ) {
-    /* Find out if the room already exists. */
-    if(rooms[room] == null) {
-      /* TODO: if the room is defunct, reinitialize it. */
-      rooms[room] = new GameRoom(room);
-    }
+  /* Called whenever there is a new socket connection.  Set up a listener
+   * for messages. */
+  connectSocket( socket ) {
+    Player p;
 
-    var gr = rooms[room];
+    socket.onData.listen((data) {
+      var message;
 
-    /* Check whether this player already exists in this room. */
-    if(gr.players[name] == null) {
-      var p = new Player(name);
-      gr.addPlayer(p);
-    }
+      if(data.length > 1024) {
+        /* No client messages should come anywhere close to this size.  Assume
+         * that someone is trying something nasty and close the socket. */
+        socket.close();
+      }
 
-    return gr.players[name];
+      /* The expectation is that the message data is a JSON map, and has an
+       * event field that categorizes the message; reject any messages that
+       * don't match that format. */
+      try {
+        message = jsonDecode(data);
+      } catch(e) {
+        socket.send("error", "message is not JSON data.");
+        return;
+      }
+
+      if(!(message is Map) ||
+         !(message["event"] is String)) {
+        socket.send("error", "malformed message.");
+        return;
+      }
+
+      /* The server is responsible for handling login events; the remainder
+       * of the events are handled by the player's handleMessage function. */
+      if(message["event"] == "login") {
+        String name = sanitizeString(message["name"]);
+        String room = sanitizeString(message["room"]);
+        if(name == null || room == null) {
+          socket.send("error", "name or room is invalid.");
+          return;
+        }
+        
+        /* Client expects a "success" response to its login as the first
+         * message. */
+        socket.send("success", "Login successful.");
+
+        /* These calls look up the room and player, and will create the
+         * associated objects if required. */
+        var r = lookupRoom(room);
+        p = r.lookupPlayer(name);
+
+        p.connect(socket);
+
+        log("Login for $name");
+      } else {
+        /* Defer to player message handler. */
+        p?.handleMessage(message);
+      }
+    });
   }
 
-  getPlayer( String name, String room ) => rooms[room]?.players[name];
+  /* Look up a room by room code, possibly initializing it if it is not yet. */
+  GameRoom lookupRoom( String roomName ) {
+    var room = rooms[roomName];
+
+    if(room == null || room.isDefunct()) {
+      log("Initializing new room $roomName");
+      room = new GameRoom(roomName);
+      rooms[roomName] = room;
+    }
+
+    return room;
+  }
 }
 
 enum GameState {
@@ -66,7 +118,6 @@ class GameRoom {
   int totalQuestions;  /* number of questions played in the game. */
 
   DateTime countdownTime;
-  Timer countdownTimer;
   DateTime answerTime;
   Timer answerTimer;
 
@@ -74,23 +125,46 @@ class GameRoom {
     questions = new QuestionList.fromMaster(GameServer.questionList);
   }
 
-  addPlayer( Player p ) {
-    players[p.name] = p;
-    p.room = this;
+  /* Look up a player by name, possibly creating a new player object. */
+  Player lookupPlayer( String playerName ) {
+    if(players[playerName] == null) {
+      var p = new Player(playerName);
+      p.room = this;
 
-    /* If there is currently no host, then make this player the host. */
-    if(host == null) host = p;
+      /* If there is currently no host, then make this player the host. */
+      if(host == null) host = p;
 
-    if(state == GameState.Lobby) broadcastState();
+      players[playerName] = p;
+    }
+
+    return players[playerName];
   }
 
-  removePlayer( Player p ) {
-    players.remove(p.name);
+  /* Determine if a room is defunct.  If it is, then on a new login we'll
+   * just re-initialize the room.
+   * A room is considered defunct if the host has been disconnected for at
+   * least 5 minutes, and all remaining players are disconnected. */
+  bool isDefunct( ) {
+    if(host == null) return true;
+    /* If any players are not disconnected return false */
+    if(!players.values.fold(true, (t, p) => (t && p.state ==
+          PlayerState.disconnected))) return false;
+    /* Return true if the host has been disconnected for more than 5 minutes */
+    if(DateTime.now().difference(host.disconnectTime).inMinutes >= 5) 
+      return true;
+    return false;
   }
 
-  Player getPlayer( String name ) => players[name];
+  /* The following functions are handlers for the various messages that the
+   * client may send:
+   *  -- start game (pressed start button)
+   *  -- select answer (update the chosen answer ID for this player)
+   *  -- confirm results (host pressed reveal results button)
+   *  -- complete results (host pressed next question/final results button)
+   *  -- complete final (host pressed end game button) */
 
   doStartGame( Player p ) {
+    /* Whoever selects "start game" becomes the host. */
     host = p;
     changeState(GameState.GameSetup);
   }
@@ -109,8 +183,6 @@ class GameRoom {
     changeState(GameState.Lobby);
   }
 
-  /* TODO: need an end game option. */
-
   doSelectAnswer( Player p, int answerId ) {
     /* Allow players to submit answers until the results are going to be 
      * revealed. */
@@ -120,7 +192,8 @@ class GameRoom {
     p.answerId = answerId;
 
     /* If in the answer state, and all active players have responded, then
-     * move immediately to the ConfirmResults state. */
+     * act as if the timer expired early and proceed to the confirm results
+     * state. */
     if(state == GameState.Answer) {
       bool checkin = true;
       players.values.forEach( (p) { 
@@ -138,121 +211,9 @@ class GameRoom {
     }
   }
 
-  countdownComplete( ) {
-    countdownTimer = null;
-    changeState(GameState.Answer);
-  }
-
-  bool changeState( GameState newState ) {
-    /* Make sure transition is valid. */
-    switch(state) {
-      case GameState.Lobby:
-        if(newState != GameState.GameSetup) return false;
-        break;
-
-      case GameState.GameSetup:
-        if(newState != GameState.RoundSetup) return false;
-        break;
-
-      case GameState.RoundSetup:
-        if(newState != GameState.Countdown) return false;
-        break;
-
-      case GameState.Countdown:
-        if(newState != GameState.Answer) return false;
-        break;
-
-      case GameState.Answer:
-        if(newState != GameState.ConfirmResults) return false;
-        break;
-
-      case GameState.ConfirmResults:
-        if(newState != GameState.Results) return false;
-        break;
-
-      case GameState.Results:
-        if(newState != GameState.RoundSetup &&
-           newState != GameState.Countdown &&
-           newState != GameState.Final)
-          return false;
-        break;
-
-      case GameState.Final:
-        if(newState != GameState.Lobby) return false;
-        break;
-    }
-
-    GameState oldState = state;
-    state = newState;
-
-    switch(newState) {
-      case GameState.Lobby:
-        broadcastState();
-        break;
-
-      case GameState.GameSetup:
-        /* Update the player list:
-         * - Purge any disconnected players
-         * - Allow pending players into the game. */
-        players.removeWhere((k, p) => (p.state == PlayerState.disconnected));
-        players.values.forEach((p) {
-          if(p.state == PlayerState.pending)
-            p.state = PlayerState.active; });
-
-        /* Set scores to 0, etc. */
-        players.values.forEach( (p) { p.score = 0; } );
-        questionLimit = 12;
-        roundQuestionLimit = questionLimit;
-        totalQuestions = 0;
-
-        changeState(GameState.RoundSetup);
-        break;
-
-      case GameState.RoundSetup:
-        /* Pick target players, etc. */
-        roundSetup();
-        break;
-
-      case GameState.Countdown:
-        countdownTime = new DateTime.now().add(new Duration(seconds: 3));
-        if(countdownTimer != null) {
-          countdownTimer.cancel();
-        }
-        countdownTimer = new Timer(new Duration(seconds: 3),
-                                   countdownComplete);
-        broadcastState();
-        break;
-
-      case GameState.Answer:
-        answer();
-        break;
-
-      case GameState.ConfirmResults:
-        broadcastState();
-        break;
-
-      case GameState.Results:
-        /* Stop answer timer if it's still running. */
-
-        /* Calculate results. */
-        scoreQuestion();
-
-        /* Notify all players of results. */
-        broadcastState();
-        break;
-
-      case GameState.Final:
-        /* Notify all players of final results. */
-        broadcastState();
-        break;
-    }
-
-    return true;
-  }
-
-  notifyAll( String event, String data ) {
-    players.values.forEach((player) => player.sendMsg(event, data));
-  }
+  /* Functions for building and sending "state messages" to the client.
+   * Every time the game changes state the client gets sent a message
+   * to update what the client is showing to the player. */
 
   broadcastState( ) => players.values.forEach((p) => notifyState(p));
 
@@ -308,7 +269,6 @@ class GameRoom {
     /* lobby message contains:
      *   state = "lobby"
      *   players = [ playerlist ]
-     *   host = true/false  -- TODO
      */
     var msgMap = new Map<String, dynamic>();
     msgMap["state"] = "lobby";
@@ -367,23 +327,21 @@ class GameRoom {
     var playerList = players.values.where((p) => 
             (p.state == PlayerState.active ||
              (p.state == PlayerState.disconnected && p.missedQuestions < 2) ||
-             (p.answerId >= 0 &&
-              p.answerId < currentQuestion.answers.length))).toList();
+             (p.answerId != -1))).toList();
 
     playerList.forEach((player) {
       var playerResult = new List();
       playerResult.add(player.name);
-      var answer = player.answerId;
-      if(answer == null ||
-         answer < 0 ||
-         answer >= currentQuestion.answers.length) answer = -1;
-      playerResult.add(answer);
+      playerResult.add(player.answerId);
       playerResult.add(player.roundScore);
       playerResult.add(player.score);
       resultList.add(playerResult);
     });
     msgMap["results"] = resultList;
 
+    /* Give an indication if this was the last question (the client will
+     * display "Final Results" instead of "Next Question" on the continue
+     * button. */
     msgMap["finalnext"] = (questionComplete() == GameState.Final);
 
     return msgMap;
@@ -398,27 +356,126 @@ class GameRoom {
     var msgMap = new Map<String, dynamic>();
     msgMap["state"] = "final";
 
-    var resultList = new List<List>();
-
-    /* Report data for players in active or disconnected state, or
-     * who have a nonzero score. */
+    /* Report data for players in active state, or who have answered
+     * at least one question. */
     var playerList = players.values.where((p) => 
             (p.state == PlayerState.active ||
-             p.state == PlayerState.disconnected ||
-             p.score != 0)).toList();
+             p.questionsAnswered != 0));
 
-    playerList.forEach((player) {
-      var playerResult = new List();
-      playerResult.add(player.name);
-      playerResult.add(player.score);
-      resultList.add(playerResult);
-    });
-    msgMap["results"] = resultList;
+    msgMap["results"] =
+      playerList.map((p) => [ p.name, p.score ]).toList();
 
     return msgMap;
   }
 
   /* Functions that handle the transition into a particular state. */
+  bool changeState( GameState newState ) {
+    /* Make sure transition is valid. */
+    switch(state) {
+      case GameState.Lobby:
+        if(newState != GameState.GameSetup) return false;
+        break;
+
+      case GameState.GameSetup:
+        if(newState != GameState.RoundSetup) return false;
+        break;
+
+      case GameState.RoundSetup:
+        if(newState != GameState.Countdown) return false;
+        break;
+
+      case GameState.Countdown:
+        if(newState != GameState.Answer) return false;
+        break;
+
+      case GameState.Answer:
+        if(newState != GameState.ConfirmResults) return false;
+        break;
+
+      case GameState.ConfirmResults:
+        if(newState != GameState.Results) return false;
+        break;
+
+      case GameState.Results:
+        if(newState != GameState.RoundSetup &&
+           newState != GameState.Countdown &&
+           newState != GameState.Final)
+          return false;
+        break;
+
+      case GameState.Final:
+        if(newState != GameState.Lobby) return false;
+        break;
+    }
+
+    state = newState;
+
+    /* Transition is OK; do any handling unique to entering each state. */
+    switch(newState) {
+      case GameState.Lobby:
+        broadcastState();
+        break;
+
+      case GameState.GameSetup:
+        /* Update the player list:
+         * - Purge any disconnected players
+         * - Allow pending players into the game. */
+        players.removeWhere((k, p) => (p.state == PlayerState.disconnected));
+        players.values.forEach((p) {
+          if(p.state == PlayerState.pending)
+            p.state = PlayerState.active; });
+
+        /* Set scores to 0, etc. */
+        players.values.forEach( (p) { 
+          p.score = 0; 
+          p.questionsAnswered = 0;
+        } );
+        questionLimit = 12;
+        roundQuestionLimit = questionLimit;
+        totalQuestions = 0;
+
+        changeState(GameState.RoundSetup);
+        break;
+
+      case GameState.RoundSetup:
+        /* Pick target players, etc. */
+        roundSetup();
+        break;
+
+      case GameState.Countdown:
+        countdownTime = new DateTime.now().add(new Duration(seconds: 3));
+        new Timer(new Duration(seconds: 3),
+                  () => changeState(GameState.Answer));
+        broadcastState();
+        break;
+
+      case GameState.Answer:
+        answer();
+        break;
+
+      case GameState.ConfirmResults:
+        broadcastState();
+        break;
+
+      case GameState.Results:
+        /* Stop answer timer if it's still running. */
+
+        /* Calculate results. */
+        scoreQuestion();
+
+        /* Notify all players of results. */
+        broadcastState();
+        break;
+
+      case GameState.Final:
+        /* Notify all players of final results. */
+        broadcastState();
+        break;
+    }
+
+    return true;
+  }
+
   roundSetup( ) {
     /* Reset the number of questions asked in this round. */
     roundQuestions = 0;
@@ -481,10 +538,15 @@ class GameRoom {
     List<int> votes = new List<int>.filled(currentQuestion.answers.length, 0);
     players.values.forEach((player) {
       player.roundScore = 0;
-      if(player.answerId != null &&
-         player.answerId >= 0 &&
-         player.answerId < votes.length) {
+
+      /* Normalize bad values for the answer ID. */
+      if(player.answerId == null ||
+         player.answerId < 0 ||
+         player.answerId >= votes.length) player.answerId = -1;
+
+      if(player.answerId != -1) {
         votes[player.answerId]++;
+        player.questionsAnswered++;
         player.missedQuestions = 0;
       } else {
         /* This player did not answer the question.  Increment the
@@ -583,11 +645,16 @@ class GameRoom {
         break;
     }
 
-    notifyState(p);
+    if(state == GameState.Lobby) {
+      /* In the lobby, everyone gets notified whenever a player connects. */
+      broadcastState();
+    } else {
+      notifyState(p);
+    }
   }
 
   disconnectPlayer( Player p ) {
-    print("Disconnected player ${p.name}");
+    log("Disconnected player ${p.name}");
     p.state = PlayerState.disconnected;
     if(state == GameState.Lobby) broadcastState();
   }
@@ -613,10 +680,12 @@ class Player {
   GameRoom room;
   PlayerState state = PlayerState.pending;
   int score = 0;
+  int questionsAnswered = 0;
 
   WebSocketContext socket;
-  Timer pingTimer;
+
   int missedPing = 0;
+  DateTime disconnectTime; /* Time the player was disconnected. */
 
   /* Answer ID and score for current round. */
   int answerId = -1;
@@ -654,7 +723,7 @@ class Player {
 
     if(missedPing >= 3) {
       /* Missed two pings in succession; disconnect. */
-      print("Disconnecting due to missing pings.");
+      log("Disconnecting due to missing pings.");
       socket.close();
       disconnect();
       return;
@@ -671,8 +740,9 @@ class Player {
   }
 
   disconnect( ) {
-    print("socket disconnected.");
+    log("socket disconnected.");
     socket = null;
+    disconnectTime = DateTime.now();
     room.disconnectPlayer(this);
   }
 
@@ -712,6 +782,23 @@ class Player {
   sendMsg( String event, String data ) => socket?.send(event, data);
 }
 
-dynamic randomChoice( List l ) {
-  return l[new Random().nextInt(l.length)];
+
+/* Strings coming from the client have the following restrictions:
+ * All uppercase (will be converted)
+ * Remove any non-ASCII characters and characters that must be
+ *   escaped for HTML.
+ * No leading/trailing whitespace (will be removed)
+ * If there's nothing left, then return an error.
+ */
+String sanitizeString( str ) {
+  if(!(str is String)) return null;
+
+  var s = str.toUpperCase();
+  /* Get rid of any characters outside of the 32-127 range. */
+  s = s.replaceAll(new RegExp(r"[^\x20-\x7e]"), '');
+  /* Get rid of HTML special chars. */
+  s = s.replaceAll(new RegExp(r"[\x22\x26\x27\x3c\x3e]"), '');
+  s = s.trim();
+  if(s.length < 1) return null;
+  return s;
 }

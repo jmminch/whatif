@@ -12,6 +12,9 @@ import 'server.dart';
 
 GameServerClass GameServer;
 
+int port = 36912;
+String interface = "127.0.0.1";
+
 main() async {
   GameServer = new GameServerClass();
 
@@ -23,7 +26,7 @@ main() async {
 
   app.get('/ws', ws.handleRequest);
 
-  ws.onConnection.listen(socketConnect);
+  ws.onConnection.listen((s) => GameServer.connectSocket(s));
 
   /* Serve the files from the web/ directory. */
   var fs = const LocalFileSystem();
@@ -34,78 +37,11 @@ main() async {
   app.fallback((req, res) => throw AngelHttpException.notFound());
 
   /* Hardcoded to port 36912 for now. */
-  await http.startServer('0.0.0.0', 36912);
+  await http.startServer(interface, port);
 
-  print("Listening on port 36912.");
+  log("Listening on $interface port $port.");
 }
 
-/* Strings coming from the client have the following restrictions:
- * All uppercase (will be converted)
- * Remove any non-ASCII characters and characters that must be
- *   escaped for HTML.
- * No leading/trailing whitespace (will be removed)
- * If there's nothing left, then return an error.
- */
-String sanitizeString( str ) {
-  if(!(str is String)) return null;
-
-  var s = str.toUpperCase();
-  /* Get rid of any characters outside of the 32-127 range. */
-  s = s.replaceAll(new RegExp(r"[^\x20-\x7e]"), '');
-  /* Get rid of HTML special chars. */
-  s = s.replaceAll(new RegExp(r"[\x22\x26\x27\x3c\x3e]"), '');
-  s = s.trim();
-  if(s.length < 1) return null;
-  return s;
-}
-
-socketConnect( socket ) async {
-  Player p;
-
-  socket.onData.listen((data) {
-    var message;
-
-    try {
-      message = jsonDecode(data);
-    } catch(e) {
-      socket.send("error", "message is not JSON data.");
-      return;
-    }
-
-    if(!(message is Map)) {
-      socket.send("error", "message is not JSON map.");
-    }
-
-    if(message["event"] == "login") {
-      print("handling login event.");
-
-      String name = sanitizeString(message["name"]);
-      if(name == null) {
-        socket.send("error", "Name is invalid.");
-        return;
-      }
-
-      String room = sanitizeString(message["room"]);
-      if(room == null) {
-        socket.send("error", "Room is invalid.");
-        return;
-      }
-
-      GameServer.addPlayer(name, room);
-      p = GameServer.getPlayer(name, room);
-      if(p == null) {
-        socket.send("error", "Login failed.");
-      } else {
-        p.connect(socket);
-        socket.send("success", "Login successful.");
-
-        /* Tell the player the current state. */
-        p.room.notifyState(p);
-      }
-    } else if(message["event"] is String) {
-      p?.handleMessage(message);
-    } else {
-      socket.send("malformed message.");
-    }
-  });
+log( String s ) {
+  print(new DateTime.now().toString() + " " + s);
 }

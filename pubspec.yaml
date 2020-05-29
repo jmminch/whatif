@@ -1,4 +1,4 @@
-name: imaginiff
+name: whatif
 version: 0.1.0
 dependencies:
     angel_framework: ^2.0.0
