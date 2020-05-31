@@ -223,6 +223,9 @@ function startCountdown(msg) {
 }
 
 function startAnswer(msg) {
+  document.getElementById("answer-headerline").innerHTML =
+    `<span style="float: left">Room: ${msg.room}</span>WHAT IF?` +
+    `<span style="float: right">${msg.name}</span>`;
   document.getElementById("answer-question").innerHTML = msg.question;
 
   var answerList = "";
@@ -269,6 +272,9 @@ function startAnswer(msg) {
 }
 
 function createResultList(msg) {
+  document.getElementById("results-headerline").innerHTML =
+    `<span style="float: left">Room: ${msg.room}</span>WHAT IF?` +
+    `<span style="float: right">${msg.name}</span>`;
   document.getElementById("results-question").innerHTML = msg.question;
 
   var results = msg.answers.map(x => [ x, 0 ]);
@@ -345,6 +351,10 @@ function createResultList(msg) {
 }
 
 function createFinalResultList(msg) {
+  document.getElementById("final-headerline").innerHTML =
+    `<span style="float: left">Room: ${msg.room}</span>WHAT IF?` +
+    `<span style="float: right">${msg.name}</span>`;
+
   var resultList = "";
   msg.results.sort((a,b) => b[1] - a[1]);
   msg.results.forEach(function(r) {

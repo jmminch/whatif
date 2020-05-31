@@ -233,3 +233,15 @@
 .player-score {
   float: right;
 }
+
+.header2 {
+  position: sticky;
+  top: 0;
+  width: calc(100% - 20px);
+  background-color: #379683;
+  color: #fdf6e3;
+  font-size: 18px;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+}
