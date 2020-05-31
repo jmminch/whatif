@@ -121,6 +121,8 @@ class GameRoom {
   DateTime answerTime;
   Timer answerTimer;
 
+  Timer stateTimer;
+
   GameRoom( this.name ) {
     questions = new QuestionList.fromMaster(GameServer.questionList);
   }
@@ -410,6 +412,10 @@ class GameRoom {
 
     state = newState;
 
+    /* Cancel any ongoing timer. */
+    if(stateTimer != null && stateTimer.isActive) stateTimer?.cancel();
+    stateTimer = null;
+
     /* Transition is OK; do any handling unique to entering each state. */
     switch(newState) {
       case GameState.Lobby:
@@ -454,20 +460,38 @@ class GameRoom {
         break;
 
       case GameState.ConfirmResults:
+        stateTimer = new Timer(new Duration(seconds: 10),
+                () {
+                  stateTimer = null;
+                  if(host.state == PlayerState.disconnected)
+                    changeState(GameState.Results);
+                });
         broadcastState();
         break;
 
       case GameState.Results:
-        /* Stop answer timer if it's still running. */
-
         /* Calculate results. */
         scoreQuestion();
+
+        stateTimer = new Timer(new Duration(seconds: 30),
+                () {
+                  stateTimer = null;
+                  if(host.state == PlayerState.disconnected)
+                    doCompleteResults(host);
+                });
 
         /* Notify all players of results. */
         broadcastState();
         break;
 
       case GameState.Final:
+        stateTimer = new Timer(new Duration(seconds: 30),
+                () {
+                  stateTimer = null;
+                  if(host.state == PlayerState.disconnected)
+                    doCompleteFinal(host);
+                });
+
         /* Notify all players of final results. */
         broadcastState();
         break;
@@ -660,6 +684,22 @@ class GameRoom {
     log("Disconnected player ${p.name}");
     p.state = PlayerState.disconnected;
     if(state == GameState.Lobby) broadcastState();
+
+    /* If the disconnected player is the host, possibly automatically move
+     * to the next state. */
+    if(p == host && stateTimer == null) {
+      switch(state) {
+        case GameState.ConfirmResults:
+          changeState(GameState.Results);
+          break;
+        case GameState.Results:
+          doCompleteResults(host);
+          break;
+        case GameState.Final:
+          doCompleteFinal(host);
+          break;
+      }
+    }
   }
 }
 
