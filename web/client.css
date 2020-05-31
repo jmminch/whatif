@@ -50,8 +50,9 @@
 }
 
 .question {
+  text-align: left;
   font-size: 24px;
-  padding: 10px 20px;
+  padding: 10px 0px;
   overflow: auto;
 }
 
