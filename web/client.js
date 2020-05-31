@@ -135,7 +135,7 @@ function handleStateMessage(msg) {
       startCountdown(msg);
       break;
 
-    case "answer":
+    case "question":
       changeScreen("answer");
       startAnswer(msg);
       break;

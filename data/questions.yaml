@@ -1524,3 +1524,208 @@
     - Cast iron
     - Quicksilver
     - Heavy metal
+
+- question: If ___ were a character from Star Wars, which would he/she be?
+  answers:
+    - Luke Skywalker
+    - Princess Leia
+    - Master Yoda
+    - Chewbacca
+    - C-3PO
+    - Darth Vader
+
+- question: If ___ was a display of friendship, which would he/she be?
+  answers:
+    - Lingering kiss
+    - Hug
+    - Firm handshake
+    - Wink
+    - High five
+    - Slap on the back
+
+- question: >-
+    If ___ witnessed a mugging on the city street, what would he/she do?
+  answers:
+    - Wrestle the mugger to the ground
+    - Ignore it and keep walking
+    - Attempt a citizen's arrest
+    - Offer post-mugging counseling
+    - Scream hysterically
+    - Take a photo and sell it to the media
+
+- question: If ___ were a movie catchphrase, which would he/she be?
+  answers:
+    - "\"Here's looking at you, kid\""
+    - "\"Go ahead, make my day\""
+    - "\"May the force be with you\""
+    - "\"A martini, shaken, not stirred\""
+    - "\"There's no place like home\""
+    - "\"This is another fine mess you've gotten me into\""
+
+- question: >-
+    If ___ could discover the answer to a great mystery, which mystery would
+    he/she choose?
+  answers:
+    - Who killed JFK?
+    - What are the Colonel's eleven secret herbs and spices?
+    - Is there life in outer space?
+    - What is the secret of eternal youth and good looks?
+    - How come I pay more taxes than Donald Trump?
+    - What happens after death?
+
+- question: If ___ could afford to buy a dream home, which would he/she buy?
+  answers:
+    - Ultra-modern city penthouse
+    - Sprawling farmhouse
+    - Grand mansion
+    - Rugged mountain lodge
+    - Beach condominium
+    - Medieval castle
+
+- question: >-
+    If ___ could acquire one of the following natural abilities, which
+    would he/she choose?
+  answers:
+    - Amazing eye/hand coordination
+    - The ability to contact the spirit world
+    - Photographic memory
+    - The ability to win friends and influence people
+    - Musical virtuosity
+    - Optimism
+
+- question: If ___ were a high school class, which would he/she be?
+  answers:
+    - Social Studies
+    - Home Economics
+    - Shop
+    - Lunch
+    - Gym
+    - Study Hall
+
+- question: If ___ suffered a minor crisis, which would upset him/her most?
+  answers:
+    - Burning the roast
+    - Scratch on the car
+    - Computer virus
+    - TV breaking down
+    - Credit cards cancelled
+    - Stain on the lapel
+
+- question: >-
+    If ___ were choosing hotel accommodations, which of the following would
+    he/she deem most important?
+  answers:
+    - The name
+    - The size of the bed
+    - Cleanliness
+    - The price
+    - Number of cable TV channels
+    - Well-stocked mini bar
+
+- question: If ___ were at a construction site, what would he/she be doing?
+  answers:
+    - Setting up cones
+    - Taking a coffee break
+    - Drawing up the plans
+    - Getting fired
+    - Doing something with a jack-hammer
+    - Complaining about working conditions
+
+- question: If ___ could solve one problem, which would he/she choose?
+  answers:
+    - Computer viruses
+    - War
+    - Unemployment
+    - Environmental destruction
+    - Immorality
+    - The disco revival
+
+- question: If ___ were something to look through, which would he/she be?
+  answers:
+    - Telescope
+    - Sunglasses
+    - Reading glasses
+    - Binoculars
+    - Safety goggles
+    - Rose-colored glasses
+
+- question: If ___ were a circus performer, which would he/she be?
+  answers:
+    - Clown
+    - Trapeze artist
+    - Lion tamer
+    - Juggler
+    - Fire eater
+    - Performing poodle
+
+- question: If ___ were a famous landmark, which would he/she be?
+  answers:
+    - Empire State Building
+    - Taj Mahal
+    - The "Hollywood" sign
+    - Leaning Tower of Pisa
+    - Yankee Stadium
+    - Stonehenge
+
+- question: If ___ were a home, which would he/she be?
+  answers:
+    - 4 bedroom, brick with family room
+    - Mobile home
+    - Penthouse apartment
+    - Beach house
+    - Tent
+    - Grand mansion
+
+- question: If ___ were a decade, which would he/she be?
+  answers:
+    - Politically correct '90s
+    - Greedy '80s
+    - Groovy '70s
+    - Swinging '60s
+    - Conservative '50s
+    - Roaring '20s
+
+- question: If ___ were a TV catchphrase, which would he/she be?
+  answers:
+    - "\"Beam me up, Scotty\""
+    - "\"Doh!\""
+    - "\"And now for something completely different\""
+    - "\"Who loves ya baby\""
+    - "\"And loving it!\""
+    - "\"Your mission, should you choose to accept it...\""
+
+- question: >-
+    If ___ stepped onto a bus and the only other passenger was his/her
+    favorite TV star, what would he/she do?
+  answers:
+    - Ignore the star
+    - Politely say hello but respect their privacy
+    - Tell the star about a great creative
+    - Offer a critique of the star's work
+    - Nervously ask for an autograph
+    - Drop their jaw and scream "I love you!"
+
+- question: If ___ were a magazine, which would he/she be?
+  answers:
+    - Time
+    - Sports Illustrated
+      # - Playboy
+    - Popular Science
+    - House and Garden
+    - Vogue
+    - MAD
+
+- question: If ___ were an advertising slogan, which would he/she be?
+  answers:
+    - "\"Breakfast of champions\""
+    - "\"Think different\""
+    - "\"A diamond is forever\""
+    - "\"Where's the beef?\""
+    - "\"Not going anywhere for a while?\""
+    - "\"Have it your way\""
+      # More ideas
+      # - "\"Australian for beer\""
+      # - "\"Melts in your mouth, not in your hand\""
+      # - "\"Nothing runs like a Deere\""
+      # - "\"Just do it\""
+      # - "\"I'm lovin' it\""

@@ -93,7 +93,7 @@ enum GameState {
   GameSetup,
   RoundSetup,
   Countdown,  /* countdown before next question. */
-  Answer,
+  Question,
   ConfirmResults,  /* allow host to choose when results are shown. */
   Results,
   Final
@@ -173,7 +173,7 @@ class GameRoom {
     if(p != host) return;
 
     /* Depending on the state of the game, can go to round setup,
-       back to answer, or to final results. */
+       back to question, or to final results. */
     changeState(questionComplete());
   }
 
@@ -186,15 +186,15 @@ class GameRoom {
   doSelectAnswer( Player p, int answerId ) {
     /* Allow players to submit answers until the results are going to be 
      * revealed. */
-    if(state != GameState.Answer &&
+    if(state != GameState.Question &&
        state != GameState.ConfirmResults) return;
 
     p.answerId = answerId;
 
-    /* If in the answer state, and all active players have responded, then
+    /* If in the question state, and all active players have responded, then
      * act as if the timer expired early and proceed to the confirm results
      * state. */
-    if(state == GameState.Answer) {
+    if(state == GameState.Question) {
       bool checkin = true;
       players.values.forEach( (p) { 
         /* Make sure that all players that are active, or are disconnected
@@ -253,9 +253,9 @@ class GameRoom {
         return { "state" : "countdown",
                  "timeout" : seconds };
 
-      case GameState.Answer:
+      case GameState.Question:
       case GameState.ConfirmResults:
-        return buildAnswerStateMsg();
+        return buildQuestionStateMsg();
 
       case GameState.Results:
         return buildResultsStateMsg();
@@ -279,9 +279,9 @@ class GameRoom {
     return msgMap;
   }
 
-  Map buildAnswerStateMsg( ) {
-    /* answer message contains:
-     *   state = "answer" OR "confirmresults"
+  Map buildQuestionStateMsg( ) {
+    /* question message contains:
+     *   state = "question" OR "confirmresults"
      *   target = string
      *   question = string
      *   answers = list of strings
@@ -289,7 +289,7 @@ class GameRoom {
      */
 
     var msgMap = new Map<String, dynamic>();
-    msgMap["state"] = "answer";
+    msgMap["state"] = "question";
     msgMap["target"] = currentTarget.name;
     msgMap["question"] = currentQuestion.targeted(currentTarget.name);
     msgMap["answers"] = currentQuestion.answers;
@@ -385,10 +385,10 @@ class GameRoom {
         break;
 
       case GameState.Countdown:
-        if(newState != GameState.Answer) return false;
+        if(newState != GameState.Question) return false;
         break;
 
-      case GameState.Answer:
+      case GameState.Question:
         if(newState != GameState.ConfirmResults) return false;
         break;
 
@@ -445,12 +445,12 @@ class GameRoom {
       case GameState.Countdown:
         countdownTime = new DateTime.now().add(new Duration(seconds: 3));
         new Timer(new Duration(seconds: 3),
-                  () => changeState(GameState.Answer));
+                  () => changeState(GameState.Question));
         broadcastState();
         break;
 
-      case GameState.Answer:
-        answer();
+      case GameState.Question:
+        startQuestion();
         break;
 
       case GameState.ConfirmResults:
@@ -491,7 +491,7 @@ class GameRoom {
     changeState(GameState.Countdown);
   }
 
-  answer( ) {
+  startQuestion( ) {
     /* Let any waiting players into the game. */
     players.values.forEach((p) {
       if(p.state == PlayerState.pending)
@@ -619,7 +619,7 @@ class GameRoom {
      *     been asked, then proceed to Final state.
      *   - If the round is over, and the total number of questions is less
      *     than the max, then proceed to RoundSetup.
-     *   - If the round is not over, then proceed to Answer. */
+     *   - If the round is not over, then proceed to Question. */
     if(roundQuestions >= roundQuestionLimit ||
        targets.length < 1) {
       if(totalQuestions >= questionLimit) return GameState.Final;
@@ -629,6 +629,8 @@ class GameRoom {
     return GameState.Countdown;
   }
 
+  /* Called when a socket is connected for a player.  This could be a new
+   * player, or an existing player that is reconnecting. */
   connectPlayer( Player p ) {
     switch(p.state) {
       case PlayerState.pending:
@@ -653,6 +655,7 @@ class GameRoom {
     }
   }
 
+  /* Called when the socket for a player is disconnected. */
   disconnectPlayer( Player p ) {
     log("Disconnected player ${p.name}");
     p.state = PlayerState.disconnected;
@@ -667,7 +670,7 @@ class GameRoom {
  * Pending -- Player logged in, and will be joined to the game at the next
  *  opportunity.
  * Idle -- Player is logged in and connected, but has not answered the
- *   last several answers.  Do not wait for them to answer any questions. */
+ *   last several questions.  Do not wait for them to answer any questions. */
 enum PlayerState {
   active,
   disconnected,
@@ -696,7 +699,9 @@ class Player {
 
   Player( this.name );
 
+  /* Called on socket connection. */
   connect( s ) {
+    /* Disconnect any existing socket. */
     if(socket != null) {
       socket.send("error", "disconnected");
       socket.close();
@@ -708,8 +713,9 @@ class Player {
 
     room.connectPlayer(this);
 
+    /* Set up periodic pings. */
     new Timer(new Duration(seconds: 30), () => ping(s));
-    missedPing = 1;
+    missedPing = 0;
   }
 
   /* Ping the player every 30 seconds.  This keeps the connection alive, and
@@ -747,6 +753,7 @@ class Player {
   }
 
   handleMessage( Map msg ) {
+    /* Any event besides a "pong" will make the player active. */
     if(msg["event"] != "pong") {
       missedQuestions = 0;
       if(state == PlayerState.idle) state = PlayerState.active;
