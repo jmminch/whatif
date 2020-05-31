@@ -509,6 +509,10 @@ class GameRoom {
     targets = new List<Player>.from(players.values);
     /* Select active players only. */
     targets = targets.where((p) => (p.state == PlayerState.active)).toList();
+
+    /* Stupid case if there are no active players at all. */
+    if(targets.length == 0) targets = new List<Player>.from(players.values);
+
     targets.shuffle();
 
     /* Immediately switch to the countdown. */
