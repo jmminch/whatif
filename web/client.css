@@ -12,6 +12,11 @@
   font-family: 'Nunito', sans-serif;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -193,8 +198,8 @@
   font-size: 24px;
 }
 
-.results-answerlist {
-  width: calc(100% - 40px);
+#results-answerlist {
+  margin: 0px 8px;
 }
 
 .results-answer {

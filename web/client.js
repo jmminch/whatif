@@ -35,6 +35,17 @@ document.getElementById("login-button").onclick = function (event) {
   ws.addEventListener("message", handleWsMessage);
 };
 
+// Pressing "enter" on the name field jumps to the room field.
+document.getElementById("login-name").onkeyup = function (event) {
+  if(event.keyCode === 13) {
+    if(document.getElementById("login-name").value.length > 0) {
+      event.preventDefault();
+      document.getElementById("login-room").focus();
+    }
+  }
+};
+
+// Pressing "enter" on the room field does a login. */
 document.getElementById("login-room").onkeyup = function (event) {
   if(event.keyCode === 13) {
     if(document.getElementById("login-name").value.length > 0 &&
@@ -45,6 +56,8 @@ document.getElementById("login-room").onkeyup = function (event) {
   }
 };
 
+// Handlers for the other buttons; just sends appropriate messages
+// to the server.
 document.getElementById("lobby-start").onclick = function (event) {
   if(!ws) return;
   var msg = { event: "startGame" };
@@ -85,13 +98,16 @@ document.onclick = function(event) {
     /* Display the completion text. */
     document.getElementById("answer-complete-text").style.display = "block";
 
+    /* Scroll to the bottom for the "waiting to reveal results" message. */
     window.scrollTo(0, document.body.scrollHeight);
   }
 };
 
+/* Handle message from the server. */
 function handleWsMessage(event) {
-  console.log("Handling event: " + event.data);
   var obj = JSON.parse(event.data);
+
+  console.log("Handling event: " + event.data);
 
   if(!login) {
     /* Should be a response to a login request. */
@@ -114,13 +130,14 @@ function handleWsMessage(event) {
   }
 }
 
+/* "state" messages inform the client of changes in the game state; this
+ * triggers the client to change what is displayed. */
 function handleStateMessage(msg) {
   switch(msg.state) {
     case "lobby":
       var playerList = "";
       msg.players.forEach(function(p) {
-        playerList += "<span class=\"player-card\">" + p +
-                      "</span>";
+        playerList += `<span class="player-card">${p}</span>`;
       });
       document.getElementById("lobby-playerlist").innerHTML = playerList;
       document.getElementById("lobby-myname").innerHTML =
@@ -223,11 +240,13 @@ function startCountdown(msg) {
 }
 
 function startAnswer(msg) {
+  /* Create the header */
   document.getElementById("answer-headerline").innerHTML =
     `<span style="float: left">Room: ${msg.room}</span>` +
     `<span style="float: right">${msg.name}</span>`;
   document.getElementById("answer-question").innerHTML = msg.question;
 
+  /* Build the list of answer buttons */
   var answerList = "";
   for(var i = 0; i < msg.answers.length; i++) {
     answerList +=
@@ -293,7 +312,7 @@ function createResultList(msg) {
        * the right place. */
       if(r[2] < 0) {
         results[r[1]][results[r[1]].length - 1] +=
-          " <span class=\"player-penalty\">" + r[2].toString() + "</span>"
+          ` <span class="player-penalty">${r[2].toString()}</span>`
       }
 
       if(r[2] > 0) results[r[1]][1] = r[2];
