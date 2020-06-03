@@ -27,7 +27,7 @@ body {
   padding: 0px;
   font-weight: bold;
   text-align: center;
-  z-index: 1;
+  z-index: 2;
 }
 
 #menuline {
@@ -67,6 +67,7 @@ body {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   padding: 0px;
   text-align: left;
+  z-index: 2;
 }
 
 .menu-item {
@@ -84,6 +85,14 @@ body {
   color: #888;
   padding: 5px 15px;
   cursor: pointer;
+}
+
+#menu-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  visibility: hidden;
 }
 
 .header2 {
@@ -213,7 +222,7 @@ body {
   padding: 5vh 5vw;
   background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   visibility: hidden;
 
   flex-direction: column;

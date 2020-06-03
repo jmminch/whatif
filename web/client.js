@@ -60,22 +60,28 @@ document.getElementById("login-room").onkeyup = function (event) {
   }
 };
 
-// TODO: close menu when clicking outside menu box
 document.getElementById("menubutton").onclick = function (event) {
   var displayed = (document.getElementById('menu').style.display == "block");
 
   if(!displayed) {
     document.getElementById('menu').style.display = "block";
+    document.getElementById('menu-overlay').style.visibility = "visible";
     event.target.style.backgroundColor = "#5cdb95";
   } else {
     document.getElementById('menu').style.display = "none";
+    document.getElementById('menu-overlay').style.visibility = "hidden";
     event.target.style.backgroundColor = "#379683";
   }
 };
 
+document.getElementById("menu-overlay").onclick = function (event) {
+  closeMenu();
+}
+
 function closeMenu( ) {
   document.getElementById('menu').style.display = "none";
   document.getElementById('menubutton').style.backgroundColor = "#379683";
+  document.getElementById('menu-overlay').style.visibility = "hidden";
 }
 
 // Handlers for menu buttons
