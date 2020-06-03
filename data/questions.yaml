@@ -1729,3 +1729,12 @@
       # - "\"Nothing runs like a Deere\""
       # - "\"Just do it\""
       # - "\"I'm lovin' it\""
+
+- question: If ___ were a flavor of ice cream, which would he/she be?
+  answers:
+    - Plain vanilla
+    - Rocky road
+    - Sweet cream
+    - Dark chocolate
+    - Strawberry cheesecake
+    - Nut crunch

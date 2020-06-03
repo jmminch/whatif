@@ -221,6 +221,13 @@ class GameRoom {
 
   notifyState( Player p ) {
     var msg = stateMessage();
+
+    /* Add common fields */
+    if(host != null) {
+      msg["hostname"] = host.name;
+    } else {
+      msg["hostname"] = "NONE";
+    }
     
     /* Also add the player's state. */
     msg["name"] = p.name;

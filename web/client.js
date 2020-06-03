@@ -13,6 +13,10 @@ document.getElementById("login-button").onclick = function (event) {
     ws.close();
   }
 
+  // Store name and room in local storage.
+  localStorage.setItem('name', document.getElementById("login-name").value);
+  localStorage.setItem('room', document.getElementById("login-room").value);
+
   // Create websocket connection when login is pressed.
   ws = new WebSocket(
         (location.protocol === "https:" ? "wss://" : "ws://") +
@@ -388,4 +392,19 @@ function createFinalResultList(msg) {
     document.getElementById("final-cont").style.visibility = "visible";
   else 
     document.getElementById("final-cont").style.visibility = "hidden";
+}
+
+/* Restore name and room from local storage. */
+var storedName = localStorage.getItem('name');
+if(storedName) {
+  if(document.getElementById("login-name").value.length == 0) {
+    document.getElementById("login-name").value = storedName;
+  }
+}
+
+var storedRoom = localStorage.getItem('room');
+if(storedRoom) {
+  if(document.getElementById("login-room").value.length == 0) {
+    document.getElementById("login-room").value = storedRoom;
+  }
 }
