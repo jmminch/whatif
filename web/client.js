@@ -60,6 +60,48 @@ document.getElementById("login-room").onkeyup = function (event) {
   }
 };
 
+// TODO: close menu when clicking outside menu box
+document.getElementById("menubutton").onclick = function (event) {
+  var displayed = (document.getElementById('menu').style.display == "block");
+
+  if(!displayed) {
+    document.getElementById('menu').style.display = "block";
+    event.target.style.backgroundColor = "#5cdb95";
+  } else {
+    document.getElementById('menu').style.display = "none";
+    event.target.style.backgroundColor = "#379683";
+  }
+};
+
+function closeMenu( ) {
+  document.getElementById('menu').style.display = "none";
+  document.getElementById('menubutton').style.backgroundColor = "#379683";
+}
+
+// Handlers for menu buttons
+document.getElementById("menu-about").onclick = function (event) {
+  closeMenu();
+  location.href = "about.html";
+};
+
+document.getElementById("menu-endgame").onclick = function (event) {
+  closeMenu();
+  if(!ws) return;
+  var msg = { event: "endGame" };
+  ws.send(JSON.stringify(msg));
+};
+
+document.getElementById("menu-logout").onclick = function (event) {
+  closeMenu();
+  if(ws) {
+    var msg = { event: "logout" };
+    ws.send(JSON.stringify(msg));
+    ws.onclose = null;
+    ws.close();
+  }
+  changeScreen("login");
+};
+
 // Handlers for the other buttons; just sends appropriate messages
 // to the server.
 document.getElementById("lobby-start").onclick = function (event) {
@@ -137,6 +179,17 @@ function handleWsMessage(event) {
 /* "state" messages inform the client of changes in the game state; this
  * triggers the client to change what is displayed. */
 function handleStateMessage(msg) {
+  closeMenu();
+
+  /* Set up the menu bar. */
+  document.getElementById("menu-room").innerHTML = "Room: " + msg.room;
+  document.getElementById("menu-name").innerHTML = msg.name;
+  document.getElementById("menu-room-2").innerHTML = "Room: " + msg.room;
+  document.getElementById("menu-host").innerHTML = "Host: " + msg.hostname;
+
+  document.getElementById("menu-endgame").style.display =
+    (msg.host && msg.state != "lobby") ? "block" : "none";
+
   switch(msg.state) {
     case "lobby":
       var playerList = "";
@@ -209,6 +262,12 @@ function changeScreen(id) {
     answerTimer = null;
   }
 
+  /* Set up the header */
+  document.getElementById("header-title").style.display =
+    (id == "login" || id == "lobby") ? "block" : "none";
+  document.getElementById("menuline").style.display =
+    (id != "login") ? "block" : "none";
+
   document.getElementById("login").style.display =
     (id == "login") ? "block" : "none";
   document.getElementById("lobby").style.display =
@@ -245,9 +304,6 @@ function startCountdown(msg) {
 
 function startAnswer(msg) {
   /* Create the header */
-  document.getElementById("answer-headerline").innerHTML =
-    `<span style="float: left">Room: ${msg.room}</span>` +
-    `<span style="float: right">${msg.name}</span>`;
   document.getElementById("answer-question").innerHTML = msg.question;
 
   /* Build the list of answer buttons */
@@ -295,9 +351,6 @@ function startAnswer(msg) {
 }
 
 function createResultList(msg) {
-  document.getElementById("results-headerline").innerHTML =
-    `<span style="float: left">Room: ${msg.room}</span>` +
-    `<span style="float: right">${msg.name}</span>`;
   document.getElementById("results-question").innerHTML = msg.question;
 
   var results = msg.answers.map(x => [ x, 0 ]);
@@ -374,10 +427,6 @@ function createResultList(msg) {
 }
 
 function createFinalResultList(msg) {
-  document.getElementById("final-headerline").innerHTML =
-    `<span style="float: left">Room: ${msg.room}</span>` +
-    `<span style="float: right">${msg.name}</span>`;
-
   var resultList = "";
   msg.results.sort((a,b) => b[1] - a[1]);
   msg.results.forEach(function(r) {

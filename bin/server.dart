@@ -213,6 +213,14 @@ class GameRoom {
     }
   }
 
+  doEndGame( Player p ) {
+    if(p != host) return;
+
+    log("Ending game for room ${name} by host request.");
+
+    changeState(GameState.Lobby);
+  }
+
   /* Functions for building and sending "state messages" to the client.
    * Every time the game changes state the client gets sent a message
    * to update what the client is showing to the player. */
@@ -398,17 +406,20 @@ class GameRoom {
         break;
 
       case GameState.Question:
-        if(newState != GameState.ConfirmResults) return false;
+        if(newState != GameState.ConfirmResults &&
+           newState != GameState.Lobby) return false;
         break;
 
       case GameState.ConfirmResults:
-        if(newState != GameState.Results) return false;
+        if(newState != GameState.Results &&
+           newState != GameState.Lobby) return false;
         break;
 
       case GameState.Results:
         if(newState != GameState.RoundSetup &&
            newState != GameState.Countdown &&
-           newState != GameState.Final)
+           newState != GameState.Final &&
+           newState != GameState.Lobby)
           return false;
         break;
 
@@ -797,7 +808,6 @@ class Player {
   }
 
   disconnect( ) {
-    log("socket disconnected.");
     socket = null;
     disconnectTime = DateTime.now();
     room.disconnectPlayer(this);
@@ -829,6 +839,15 @@ class Player {
 
       case "answer":
         room.doSelectAnswer(this, msg["id"]);
+        break;
+
+      case "endGame":
+        room.doEndGame(this);
+        break;
+
+      case "logout":
+        log("Disconnecting due to user request");
+        disconnect();
         break;
 
       case "pong":
