@@ -8,11 +8,15 @@ import 'questions.dart';
 import 'main.dart';
 
 class GameServerClass {
-  Map<String, GameRoom> rooms = new Map<String, GameRoom>();
+  Map<String, GameRoom> rooms = Map<String, GameRoom>();
   QuestionList questionList;
 
-  GameServerClass( ) {
-    questionList = new QuestionList.fromFile("./data/questions.json");
+  GameServerClass( );
+
+  static Future<GameServerClass> load( ) async {
+    var s = GameServerClass();
+    s.questionList = await QuestionList.fromFile("./data/questions.json");
+    return s;
   }
 
   /* Called whenever there is a new socket connection.  Set up a listener
@@ -80,7 +84,7 @@ class GameServerClass {
 
     if(room == null || room.isDefunct()) {
       log("Initializing new room $roomName");
-      room = new GameRoom(roomName);
+      room = GameRoom(roomName);
       rooms[roomName] = room;
     }
 
@@ -102,7 +106,7 @@ enum GameState {
 class GameRoom {
   String name;
 
-  Map<String, Player> players = new Map<String, Player>();
+  Map<String, Player> players = Map<String, Player>();
   GameState state = GameState.Lobby;
   QuestionList questions;
   Player host;
@@ -124,13 +128,13 @@ class GameRoom {
   Timer stateTimer;
 
   GameRoom( this.name ) {
-    questions = new QuestionList.fromMaster(GameServer.questionList);
+    questions = QuestionList.fromMaster(GameServer.questionList);
   }
 
   /* Look up a player by name, possibly creating a new player object. */
   Player lookupPlayer( String playerName ) {
     if(players[playerName] == null) {
-      var p = new Player(playerName);
+      var p = Player(playerName);
       p.room = this;
 
       /* If there is currently no host, then make this player the host. */
@@ -264,7 +268,7 @@ class GameRoom {
         return buildLobbyStateMsg();
 
       case GameState.Countdown:
-        var remainingTime = countdownTime.difference(new DateTime.now());
+        var remainingTime = countdownTime.difference(DateTime.now());
         /* Round up duration to nearest second. */
         int seconds = (remainingTime.inMilliseconds + 999) ~/ 1000;
         return { "state" : "countdown",
@@ -287,7 +291,7 @@ class GameRoom {
      *   state = "lobby"
      *   players = [ playerlist ]
      */
-    var msgMap = new Map<String, dynamic>();
+    var msgMap = Map<String, dynamic>();
     msgMap["state"] = "lobby";
     var playerList = players.values.where((p) => 
         (p.state != PlayerState.disconnected)).map((p) => (p.name)).toList();
@@ -305,12 +309,12 @@ class GameRoom {
      *   timeout = int (seconds)
      */
 
-    var msgMap = new Map<String, dynamic>();
+    var msgMap = Map<String, dynamic>();
     msgMap["state"] = "question";
     msgMap["target"] = currentTarget.name;
     msgMap["question"] = currentQuestion.targeted(currentTarget.name);
     msgMap["answers"] = currentQuestion.answers;
-    var timeout = answerTime.difference(new DateTime.now()).inSeconds;
+    var timeout = answerTime.difference(DateTime.now()).inSeconds;
     if(timeout < 0) timeout = 0;
     msgMap["timeout"] = timeout;
 
@@ -332,13 +336,13 @@ class GameRoom {
      *   final = bool
      */
 
-    var msgMap = new Map<String, dynamic>();
+    var msgMap = Map<String, dynamic>();
     msgMap["state"] = "results";
     msgMap["target"] = currentTarget.name;
     msgMap["question"] = currentQuestion.targeted(currentTarget.name);
     msgMap["answers"] = currentQuestion.answers;
 
-    var resultList = new List<List>();
+    var resultList = List<List>();
     /* Report data for players in active or disconnected state, or
      * who provided an answer. */
     var playerList = players.values.where((p) => 
@@ -347,7 +351,7 @@ class GameRoom {
              (p.answerId != -1))).toList();
 
     playerList.forEach((player) {
-      var playerResult = new List();
+      var playerResult = List();
       playerResult.add(player.name);
       playerResult.add(player.answerId);
       playerResult.add(player.roundScore);
@@ -370,7 +374,7 @@ class GameRoom {
      *   results = [ [ name, total score ] ]
      */
 
-    var msgMap = new Map<String, dynamic>();
+    var msgMap = Map<String, dynamic>();
     msgMap["state"] = "final";
 
     /* Report data for players in active state, or who have answered
@@ -467,7 +471,7 @@ class GameRoom {
         break;
 
       case GameState.Countdown:
-        countdownTime = new DateTime.now().add(new Duration(seconds: 3));
+        countdownTime = DateTime.now().add(Duration(seconds: 3));
         new Timer(new Duration(seconds: 3),
                   () => changeState(GameState.Question));
         broadcastState();
@@ -478,7 +482,7 @@ class GameRoom {
         break;
 
       case GameState.ConfirmResults:
-        stateTimer = new Timer(new Duration(seconds: 10),
+        stateTimer = Timer(Duration(seconds: 10),
                 () {
                   stateTimer = null;
                   if(host.state == PlayerState.disconnected)
@@ -491,7 +495,7 @@ class GameRoom {
         /* Calculate results. */
         scoreQuestion();
 
-        stateTimer = new Timer(new Duration(seconds: 30),
+        stateTimer = Timer(Duration(seconds: 30),
                 () {
                   stateTimer = null;
                   if(host.state == PlayerState.disconnected)
@@ -503,7 +507,7 @@ class GameRoom {
         break;
 
       case GameState.Final:
-        stateTimer = new Timer(new Duration(seconds: 30),
+        stateTimer = Timer(Duration(seconds: 30),
                 () {
                   stateTimer = null;
                   if(host.state == PlayerState.disconnected)
@@ -524,12 +528,12 @@ class GameRoom {
 
     /* Create a shuffled list of active players to use as the question
      * targets. */
-    targets = new List<Player>.from(players.values);
+    targets = List<Player>.from(players.values);
     /* Select active players only. */
     targets = targets.where((p) => (p.state == PlayerState.active)).toList();
 
     /* Stupid case if there are no active players at all. */
-    if(targets.length == 0) targets = new List<Player>.from(players.values);
+    if(targets.length == 0) targets = List<Player>.from(players.values);
 
     targets.shuffle();
 
@@ -548,9 +552,9 @@ class GameRoom {
     totalQuestions++;
 
     /* Start timer. */
-    var answerTimeout = new Duration(seconds: 31);
-    answerTime = new DateTime.now().add(answerTimeout);
-    answerTimer = new Timer(answerTimeout, answerTimerExpire);
+    var answerTimeout = Duration(seconds: 31);
+    answerTime = DateTime.now().add(answerTimeout);
+    answerTimer = Timer(answerTimeout, answerTimerExpire);
 
     /* Pick a target by removing one from the pre-populated targets list. */
     currentTarget = targets.removeLast();
@@ -581,7 +585,7 @@ class GameRoom {
 
     /* Count the number of votes for each answer.  Also zero the roundScore
      * field for each player. */
-    List<int> votes = new List<int>.filled(currentQuestion.answers.length, 0);
+    List<int> votes = List<int>.filled(currentQuestion.answers.length, 0);
     players.values.forEach((player) {
       player.roundScore = 0;
 
@@ -776,7 +780,7 @@ class Player {
     room.connectPlayer(this);
 
     /* Set up periodic pings. */
-    new Timer(new Duration(seconds: 30), () => ping(s));
+    Timer(Duration(seconds: 30), () => ping(s));
     missedPing = 0;
   }
 
@@ -800,10 +804,10 @@ class Player {
     sendMsg("ping", "ping");
 
     if(missedPing == 2) {
-      new Timer(new Duration(seconds: 5), () => ping(s));
+      Timer(Duration(seconds: 5), () => ping(s));
     } else {
       /* missedPing == 1; normal case */
-      new Timer(new Duration(seconds: 30), () => ping(s));
+      Timer(Duration(seconds: 30), () => ping(s));
     }
   }
 
@@ -872,9 +876,9 @@ String sanitizeString( str ) {
 
   var s = str.toUpperCase();
   /* Get rid of any characters outside of the 32-127 range. */
-  s = s.replaceAll(new RegExp(r"[^\x20-\x7e]"), '');
+  s = s.replaceAll(RegExp(r"[^\x20-\x7e]"), '');
   /* Get rid of HTML special chars. */
-  s = s.replaceAll(new RegExp(r"[\x22\x26\x27\x3c\x3e]"), '');
+  s = s.replaceAll(RegExp(r"[\x22\x26\x27\x3c\x3e]"), '');
   s = s.trim();
   if(s.length < 1) return null;
   return s;

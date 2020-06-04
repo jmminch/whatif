@@ -16,7 +16,7 @@ int port = 36912;
 String interface = "127.0.0.1";
 
 main() async {
-  GameServer = new GameServerClass();
+  GameServer = await GameServerClass.load();
 
   var app = Angel();
   var http = AngelHttp(app);
@@ -43,5 +43,5 @@ main() async {
 }
 
 log( String s ) {
-  print(new DateTime.now().toString() + " " + s);
+  print(DateTime.now().toString() + " " + s);
 }

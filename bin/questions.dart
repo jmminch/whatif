@@ -5,7 +5,7 @@ import 'dart:convert';
 
 class Question {
   String question;
-  List<String> answers = new List<String>();
+  List<String> answers = List<String>();
 
   Question( );
 
@@ -17,7 +17,7 @@ class Question {
   /* Question strings use ___ as a placeholder for the target.  Replace any
    * sequence of multiple underscores with the target's name. */
   String targeted( String target ) {
-    return question.replaceAll(new RegExp(r"__+"), target);
+    return question.replaceAll(RegExp(r"__+"), target);
   }
 }
 
@@ -27,26 +27,28 @@ class Question {
  * from the list until it's empty, at which point the list is refreshed from
  * the master list. */
 class QuestionList {
-  List<Question> list = new List<Question>();
+  List<Question> list = List<Question>();
   QuestionList master;
   bool shuffle = false;
 
-  QuestionList.fromFile( String path ) {
-    new File(path).readAsString().then((String data) {
-      var parsedList = jsonDecode(data);
-      parsedList.forEach((e) => list.add(new Question.fromMap(e)));
-    });
+  QuestionList( );
+
+  static Future<QuestionList> fromFile( String path ) async {
+    var q = QuestionList();
+    var parsedList = jsonDecode(await File(path).readAsString());
+    parsedList.forEach((e) => q.list.add(Question.fromMap(e)));
+    return q;
   }
 
   QuestionList.fromMaster( this.master ) {
-    list = new List<Question>.from(master.list, growable: true);
+    list = List<Question>.from(master.list, growable: true);
     list.shuffle();
     shuffle = true;
   }
 
   Question nextQuestion( ) {
     if(list.length < 1) {
-      list = new List<Question>.from(master.list, growable: true);
+      list = List<Question>.from(master.list, growable: true);
       list.shuffle();
     }
 
