@@ -1,4 +1,4 @@
-- question: If ___ were a color, which color would he/she be?
+- question: If ___ were a color, which color would they be?
   answers:
     - Lime green
     - Shocking pink
@@ -16,7 +16,7 @@
     - Kramer vs. Kramer
     - Saturday Night Fever
 
-- question: If ___ were a power source, wich would he/she be?
+- question: If ___ were a power source, wich would they be?
   answers:
     - Wind
     - Solar
@@ -34,7 +34,7 @@
     - 60 Minutes
     - Melrose Place
 
-- question: If ___ were an 80's movie, which would he/she be?
+- question: If ___ were an 80's movie, which would they be?
   answers:
     - Terminator
     - Fatal Attraction
@@ -44,7 +44,7 @@
     - On Golden Pond
 
 - question: >-
-    If ___ were honked at by an impatient driver, how would he/she react?
+    If ___ were honked at by an impatient driver, how would they react?
   answers:
     - Get out of the car and threaten the driver
     - Ignore it and turn up the radio
@@ -53,7 +53,7 @@
     - Give a genuine apologetic wave
     - Record the license plate and call the police
 
-- question: If ___ were a famous author, who would he/she be?
+- question: If ___ were a famous author, who would they be?
   answers:
     - Stephen King
     - Tom Clancy
@@ -73,7 +73,7 @@
 
 - question: >-
     If ___ had to grant government approval for a major city project, which
-    would he/she choose?
+    would they choose?
   answers:
     - Hospital
     - Library
@@ -82,7 +82,7 @@
     - Botanical gardens
     - Skyscraper
 
-- question: If ___ were a country, which would he/she be?
+- question: If ___ were a country, which would they be?
   answers:
     - Turkey
     - Columbia
@@ -91,7 +91,7 @@
     - Canada
     - Bangladesh
 
-- question: If ___ were a car, which would he/she be?
+- question: If ___ were a car, which would they be?
   answers:
     - Family sedan
     - Pick-up truck
@@ -100,7 +100,7 @@
     - Volkswagon Beetle
     - Dune Buggy
 
-- question: If ___ were a war or a battle, which would he/she be?
+- question: If ___ were a war or a battle, which would they be?
   answers:
     - Battle of the bulge
     - War of words
@@ -109,7 +109,7 @@
     - Cold War
     - Star Wars
 
-- question: If ___ could be brilliant at one thing, which would he/she choose?
+- question: If ___ could be brilliant at one thing, which would they choose?
   answers:
     - Cooking
     - Gambling
@@ -127,7 +127,7 @@
     - Dining with the in-laws
     - Becoming a parent
 
-- question: If ___ were a dental procedure, which would he/she be?
+- question: If ___ were a dental procedure, which would they be?
   answers:
     - Cosmetic whitening
     - Regular check-up
@@ -136,7 +136,7 @@
     - Braces
     - Dentures
 
-- question: If ___ were a condiment, which would he/she be?
+- question: If ___ were a condiment, which would they be?
   answers:
     - Salt
     - Grey Poupon
@@ -145,7 +145,7 @@
     - Tabasco sauce
     - Powdered rhinoceros horn
 
-- question: If ___ were a tool, which would he/she be?
+- question: If ___ were a tool, which would they be?
   answers:
     - Sledge hammer
     - Pruning shears
@@ -154,7 +154,7 @@
     - Cocktail mixer
     - Toenail clippers
 
-- question: If ___ were an invention, which would he/she be?
+- question: If ___ were an invention, which would they be?
   answers:
     - Penicillin
     - Laptop
@@ -165,7 +165,7 @@
 
 #- question: >-
 #    If ___ discovered a married friend were having an affair, what would
-#    he/she do?
+#    they do?
 #  answers:
 #    - Inform the friend's spouse
 #    - Counsel the friend
@@ -186,7 +186,7 @@
 
 - question: >-
     If ___ could enjoy one of life's little luxuries every day, which would
-    he/she choose?
+    they choose?
   answers:
     - A big, hearty breakfast
     - An ironed newspaper
@@ -195,7 +195,7 @@
     - Port and a Cuban cigar
     - An afternoon nap
 
-- question: If ___ were a stage act, which would he/she be?
+- question: If ___ were a stage act, which would they be?
   answers:
     - Poetry reading
     - Stand-up comic
@@ -205,8 +205,7 @@
     - Belly dancing
 
 - question: >-
-    If ___ had to choose one thing as most important, which would he/she
-    choose?
+    If ___ had to choose one thing as most important, which would they choose?
   answers:
     - Religion
     - Sports
@@ -215,7 +214,7 @@
     - Knowledge
     - Appearance
 
-- question: If ___ were an insect, which would he/she be?
+- question: If ___ were an insect, which would they be?
   answers:
     - Louse
     - Ant
@@ -224,7 +223,7 @@
     - Praying mantis
     - Glow worm
 
-- question: If ___ were a United States President, which would he/she be?
+- question: If ___ were a United States President, which would they be?
   answers:
     - George Bush
     - Harry Truman
@@ -234,16 +233,16 @@
     - Abraham Lincoln
 
 - question: >-
-    If ___ were awakened in the night by a burglar, what would he/she do?
+    If ___ were awakened in the night by a burglar, what would they do?
   answers:
     - Go back to sleep and rely on insurance
     - Scream
-    - Wake his/her partner and demand action
+    - Wake their partner and demand action
     - Tackle the burglar to the ground
     - Sneak out and phone the police
     - Attempt to counsel the burglar
 
-- question: If ___ were an animal, which would he/she be?
+- question: If ___ were an animal, which would they be?
   answers:
     - Sheep dog
     - Chimpanzee
@@ -252,7 +251,7 @@
     - Panther
     - Toad
 
-- question: If ___ were a flying object, which would he/she be?
+- question: If ___ were a flying object, which would they be?
   answers:
     - Blimp
     - Biplane
@@ -270,7 +269,7 @@
     - 3 Blind Mice
     - 3 Mile Island
 
-- question: If ___ were a type a headgear, which would he/she be?
+- question: If ___ were a type a headgear, which would they be?
   answers:
     - Baseball cap
     - Top hat
@@ -279,7 +278,7 @@
     - Miner's helmet
     - Virtual reality goggles
 
-- question: If ___ enjoyed a day in the snow, which would he/she do?
+- question: If ___ enjoyed a day in the snow, which would they do?
   answers:
     - Ice fishing
     - Throw snowballs at strangers
@@ -288,7 +287,7 @@
     - Hike across a mountain
     - Make "donuts" in a desolate parking lot
 
-- question: If ___ were a collection, which would he/she be?
+- question: If ___ were a collection, which would they be?
   answers:
     - Spoons
     - Live insects
@@ -297,7 +296,7 @@
     - Wedding rings
     - Credit cards
 
-- question: If ___ were a breakfast, which would he/she be?
+- question: If ___ were a breakfast, which would they be?
   answers:
     - Coffee and The Wall Street Journal
     - Muesli and fruit
@@ -306,7 +305,7 @@
     - Vitamin B injections
     - Pancakes with maple syrup
 
-- question: If ___ were a body part, which would he/she be?
+- question: If ___ were a body part, which would they be?
   answers:
     - Face
     - Buttocks
@@ -315,7 +314,7 @@
     - Brain
     - Mouth
 
-- question: If ___ were a writing implement, which would he/she be?
+- question: If ___ were a writing implement, which would they be?
   answers:
     - Fountain pen
     - Keyboard
@@ -333,7 +332,7 @@
     - The Village People
     - AC/DC
 
-- question: If ___ were a weapon, which would he/she be?
+- question: If ___ were a weapon, which would they be?
   answers:
     - Poison
     - Squirt gun
@@ -344,7 +343,7 @@
 
 - question: >-
     If ___ had to live in the 'land of the endless season,' which season would
-    he/she choose?
+    they choose?
   answers:
     - Spring
     - Summer
@@ -353,7 +352,7 @@
     - Football
     - Duck
 
-- question: If ___ were traveling on the Space Shuttle, how would he/she feel?
+- question: If ___ were traveling on the Space Shuttle, how would they feel?
   answers:
     - Proud
     - Nauseous
@@ -363,7 +362,7 @@
     - Weightless
 
 - question: >-
-    If ___ were kissing goodnight after a first date, where would he/she
+    If ___ were kissing goodnight after a first date, where would they
     plant it?
   answers:
     - Lips
@@ -391,7 +390,7 @@
     - Native trees
     - Gnomes and fountains
 
-- question: If ___ were a gift, what would he/she be?
+- question: If ___ were a gift, what would they be?
   answers:
     - Bouquet of roses
     - Book
@@ -400,7 +399,7 @@
     - Cuff links
     - Shoe horn
 
-- question: If ___ were a corporation, which would he/she be?
+- question: If ___ were a corporation, which would they be?
   answers:
     - Burger King
     - American Express
@@ -409,7 +408,7 @@
     - Nike
     - Revlon
 
-- question: If ___ were a dog, what breed would he/she be?
+- question: If ___ were a dog, what breed would they be?
   answers:
     - Poodle
     - Rottweiler
@@ -418,7 +417,7 @@
     - St. Bernard
     - Greyhound
 
-- question: If ___ were a fictional crime fighter, who would he/she be?
+- question: If ___ were a fictional crime fighter, who would they be?
   answers:
     - Sheriff Andy Taylor
     - Colombo
@@ -427,7 +426,7 @@
     - James Bond
     - Sherlock Holmes
 
-- question: If ___ were a hairstyle, which would he/she be?
+- question: If ___ were a hairstyle, which would they be?
   answers:
     - Beehive
     - Crew cut
@@ -436,7 +435,7 @@
     - Tight bun
     - Pony tail
 
-- question: If ___ were a sport, which would he/she be?
+- question: If ___ were a sport, which would they be?
   answers:
     - Golf
     - Basketball
@@ -445,7 +444,7 @@
     - Mud wrestling
     - Football
 
-- question: If ___ were a soup, which would he/she be?
+- question: If ___ were a soup, which would they be?
   answers:
     - Split pea
     - French onion
@@ -456,7 +455,7 @@
 
 - question: >-
     If ___ could have dinner with an Olympic champion, who would
-    he/she choose?
+    they choose?
   answers:
     - Brian Boitano
     - Jessie Owens
@@ -465,7 +464,7 @@
     - Greg Louganis
     - Bruce Jenner
 
-- question: If ___ were something worn on the hand, what would he/she be?
+- question: If ___ were something worn on the hand, what would they be?
   answers:
     - Brass knuckles
     - Silk glove
@@ -474,7 +473,7 @@
     - Puppet
     - Mitten
 
-- question: If ___ were a politically correct phrase, which would he/she be?
+- question: If ___ were a politically correct phrase, which would they be?
   answers:
     - Differently interesting
     - Chronologically inflated
@@ -492,7 +491,7 @@
     - Grouchy as a bear
     - Strong as an ox
 
-- question: If ___ were a surgical operation, which would he/she be?
+- question: If ___ were a surgical operation, which would they be?
   answers:
     - Frontal lobotomy
     - Face lift
@@ -501,7 +500,7 @@
     - Vasectomy
     - Mole removal
 
-- question: If ___ were a Peanuts character, who would he/she be?
+- question: If ___ were a Peanuts character, who would they be?
   answers:
     - Charlie Brown
     - Snoopy
@@ -519,7 +518,7 @@
     - Friday the 13th
     - Anything starring Jim Carrey
 
-- question: If ___ was a type of footwear, which would he/she be?
+- question: If ___ was a type of footwear, which would they be?
   answers:
     - Flip flops
     - Jack boots
@@ -528,7 +527,7 @@
     - Slippers
     - Ballet shoes
 
-- question: If ___ were a fashion faux pas, which would he/she be?
+- question: If ___ were a fashion faux pas, which would they be?
   answers:
     - Black shoes with a brown belt
     - White shoes after Labor Day
@@ -537,7 +536,7 @@
     - Clip on tie
     - Socks with sandals
 
-- question: If ___ were an award, what would he/she be?
+- question: If ___ were an award, what would they be?
   answers:
     - Parent of the year
     - Academy Award
@@ -546,7 +545,7 @@
     - Nobel Prize
     - MVP
 
-- question: If ___ were an article of memorabilia, what would he/she be?
+- question: If ___ were an article of memorabilia, what would they be?
   answers:
     - Elvis' sequined jumpsuit
     - Babe Ruth's bat
@@ -555,7 +554,7 @@
     - Shakespeare's quill
     - Lincoln's top-hat
 
-- question: If ___ were one of the senses, which would he/she be?
+- question: If ___ were one of the senses, which would they be?
   answers:
     - Touch
     - Sight
@@ -564,7 +563,7 @@
     - Taste
     - E.S.P.
 
-- question: If ___ were a light source, which would he/she be?
+- question: If ___ were a light source, which would they be?
   answers:
     - Candle
     - Sun
@@ -573,7 +572,7 @@
     - Lava lamp
     - Laser beam
 
-- question: If ___ were a profession, which would he/she be?
+- question: If ___ were a profession, which would they be?
   answers:
     - Astronaut
     - Photographer
@@ -582,7 +581,7 @@
     - Model
     - Brick layer
 
-- question: If ___ were a member of the Royal Family, who would he/she be?
+- question: If ___ were a member of the Royal Family, who would they be?
   answers:
     - Queen Elizabeth
     - Prince Charles
@@ -591,7 +590,7 @@
     - Princess Diana
     - Prince Philip
 
-- question: If ___ were a political quote, which would he/she be?
+- question: If ___ were a political quote, which would they be?
   answers:
     - "\"I didn't inhale\" (Clinton)"
     - "\"The buck stops here\" (Truman)"
@@ -600,7 +599,7 @@
     - "\"Religion is the opium of the people\" (Marx)"
     - "\"Power is the ultimate Aphrodisiac\" (Kissinger)"
 
-- question: If ___ were a Beatle, who would he/she be?
+- question: If ___ were a Beatle, who would they be?
   answers:
     - John
     - Paul
@@ -609,7 +608,7 @@
     - Volkswagon
     - Dung
 
-- question: If ___ were a piece of jewelry, which would he/she be?
+- question: If ___ were a piece of jewelry, which would they be?
   answers:
     - Diamond ring
     - Anklet
@@ -619,7 +618,7 @@
     - Earring
 
 - question: >-
-    If ___ had a wedding day disaster, which would upset him/her the most?
+    If ___ had a wedding day disaster, which would upset them the most?
   answers:
     - Photos are accidentally destroyed
     - The bride has a historic bad hair day
@@ -628,7 +627,7 @@
     - Torrential rain
     - Not enough to drink
 
-- question: If ___ were a holiday, which would he/she be?
+- question: If ___ were a holiday, which would they be?
   answers:
     - Valentine's Day
     - Dyngus Day
@@ -637,7 +636,7 @@
     - Mardi Gras
     - Thanksgiving
 
-- question: If ___ were a sea creature, which would he/she be?
+- question: If ___ were a sea creature, which would they be?
   answers:
     - Hammerhead shark
     - Dolphin
@@ -646,7 +645,7 @@
     - Jellyfish
     - Crab
 
-- question: If ___ were a feeling, what would he/she be?
+- question: If ___ were a feeling, what would they be?
   answers:
     - Angry
     - Tired
@@ -655,7 +654,7 @@
     - Romantic
     - Bored
  
-- question: If ___ were the chorus of a song, which would he/she be?
+- question: If ___ were the chorus of a song, which would they be?
   answers:
     - "\"You're so vain, you prob'ly think this song is about you\""
     - "\"I can't get no satisfaction\""
@@ -664,7 +663,7 @@
     - "\"Red red wine, stay close to me\""
     - "\"Goodness, gracious, great balls of fire!\""
 
-- question: If ___ were a 1950's movie, which would he/she be?
+- question: If ___ were a 1950's movie, which would they be?
   answers:
     - The Ten Commandments
     - Gentlement Prefer Blondes
@@ -675,7 +674,7 @@
 
 - question: >-
     If ___ were on an airplane and the pilot died of a heart attack, what
-    would he/she do?
+    would they do?
   answers:
     - Scream hysterically
     - Pray
@@ -693,7 +692,7 @@
     - The Three Stooges
     - Jerry Seinfeld
 
-- question: If ___ inherited $100,000, what would he/she do?
+- question: If ___ inherited $100,000, what would they do?
   answers:
     - Donate it to charity
     - Cash the check in one dollar bills
@@ -703,7 +702,7 @@
     - Invest it wisely
 
 - question: >-
-    If ___ were buying a home, which of the following would he/she consider
+    If ___ were buying a home, which of the following would they consider
     most important?
   answers:
     - Proximity to schools
@@ -714,7 +713,7 @@
     - Proximity to work
 
 - question: >-
-    If ___ could keep only one of the following, which would he/she choose?
+    If ___ could keep only one of the following, which would they choose?
   answers:
     - Television
     - Books
@@ -724,7 +723,7 @@
     - Wine collection
 
 - question: >-
-    If ___ were falsely accused of stealing at work, what would he/she do?
+    If ___ were falsely accused of stealing at work, what would they do?
   answers:
     - Resign in protest
     - Investigate to expose the real thief
@@ -733,7 +732,7 @@
     - Tearfully plead innocence
     - Sue for slander
 
-- question: If ___ could have just one pet, which would he/she choose?
+- question: If ___ could have just one pet, which would they choose?
   answers:
     - Pit Bull
     - Parrot
@@ -743,7 +742,7 @@
     - Pet rock
 
 - question: >-
-    If ___ were a manager, what would he/she consider the most
+    If ___ were a manager, what would they consider the most
     important quality in employees?
   answers:
     - Ruthlessness
@@ -754,7 +753,7 @@
     - Looks
 
 - question: >-
-    If ___ moved to a new neighborhood and knew no one, what would he/she do?
+    If ___ moved to a new neighborhood and knew no one, what would they do?
   answers:
     - Keep it that way
     - Join the local gym
@@ -765,7 +764,7 @@
 
 - question: >-
     If ___ had the deciding vote for an Oscar for the greatest ever male
-    actor, who would he/she choose?
+    actor, who would they choose?
   answers:
     - Tom Cruise
     - Jack Nicholson
@@ -774,7 +773,7 @@
     - Arnold Schwarzenegger
     - David Hasselhof
 
-- question: If ___ had to sing at a karaoke bar, which song would he/she sing?
+- question: If ___ had to sing at a karaoke bar, which song would they sing?
   answers:
     - Blue Suede Shoes
     - New York, New York
@@ -783,7 +782,7 @@
     - I Honestly Love You
     - Stairway To Heaven
 
-- question: If ___ were a bad habit, which would he/she be?
+- question: If ___ were a bad habit, which would they be?
   answers:
     - Breaking wind in public
     - Winking at people
@@ -793,7 +792,7 @@
     - Constantly looking in the mirror
 
 - question: >-
-    If ___ could be one of the following sportsmen, which would he/she choose?
+    If ___ could be one of the following sportsmen, which would they choose?
   answers:
     - John McEnroe
     - Babe Ruth
@@ -802,7 +801,7 @@
     - Muhammed Ali
     - Arnold Palmer
 
-- question: If ___ were a crime, which would he/she be?
+- question: If ___ were a crime, which would they be?
   answers:
     - Vagrancy
     - Homicide
@@ -812,7 +811,7 @@
     - Indecent exposure
 
 - question: >-
-    If ___ had made a million dollars, how would he/she most like to have
+    If ___ had made a million dollars, how would they most like to have
     made it?
   answers:
     - Sporting prowess
@@ -823,7 +822,7 @@
     - Show business
 
 - question: >-
-    If ___ won tickets to a concert, which performance would he/she rather
+    If ___ won tickets to a concert, which performance would they rather
     attend?
   answers:
     - Luciano Pavarotti
@@ -833,7 +832,7 @@
     - Spice Girls
     - Barry Manilow
 
-- question: If ___ were a mode of transport, which would he/she be?
+- question: If ___ were a mode of transport, which would they be?
   answers:
     - Hot rod
     - Pogo stick
@@ -842,7 +841,7 @@
     - Corporate jet
     - Jogging
 
-- question: If ___ were a criminal, who would he/she be?
+- question: If ___ were a criminal, who would they be?
   answers:
     - Al Capone
     - Michael Milken
@@ -851,7 +850,7 @@
     - Richard Nixon
     - The Joker
 
-- question: If ___ were a city, which would he/she be?
+- question: If ___ were a city, which would they be?
   answers:
     - Transylvania
     - New York
@@ -860,7 +859,7 @@
     - Las Vegas
     - Calcutta
 
-- question: If ___ were a floating vessel, which would he/she be?
+- question: If ___ were a floating vessel, which would they be?
   answers:
     - Gondola
     - Destroyer
@@ -870,8 +869,8 @@
     - Fishing trawler
 
 - question: >-
-    If ___ were propositioned at work by a co-worker he/she dilikes, what
-    would he/she do?
+    If ___ were propositioned at work by a co-worker they dilikes, what
+    would they do?
   answers:
     - Laugh out loud
     - Scam a free dinner
@@ -881,7 +880,7 @@
     - Politely decline
 
 - question: >-
-    If ___ could choose a characteristic for his/her children,
+    If ___ could choose a characteristic for their children,
     which would it be?
   answers:
     - Natural athleticism
@@ -891,7 +890,7 @@
     - Business smarts
     - Burning desire to financially support parents
 
-- question: If ___ were a piece of furniture, which would he/she be?
+- question: If ___ were a piece of furniture, which would they be?
   answers:
     - Coffee table
     - Louis XV antique
@@ -900,7 +899,7 @@
     - Bookcase
     - Water bed
 
-- question: If ___ were an era, which would he/she be?
+- question: If ___ were an era, which would they be?
   answers:
     - Biblical era
     - Computer age
@@ -909,7 +908,7 @@
     - Stone Age
     - Victorian Era
 
-- question: If ___ could attend any sporting event, which would he/she choose?
+- question: If ___ could attend any sporting event, which would they choose?
   answers:
     - U.S. Masters
     - Wimbledon
@@ -918,7 +917,7 @@
     - World heavyweight boxing title fight
     - Monte Carlo Grand Prix
 
-- question: If ___ spent a relaxing day alone, what would he/she do?
+- question: If ___ spent a relaxing day alone, what would they do?
   answers:
     - Go shopping
     - "Surf the 'net"
@@ -945,7 +944,7 @@
     - Electrocuted while changing a light bulb
     - Tripping over shoelace
 
-- question: If ___ won an overseas trip, which country would he/she visit?
+- question: If ___ won an overseas trip, which country would they visit?
   answers:
     - Kenya
     - Austria
@@ -954,7 +953,7 @@
     - China
     - Egypt
 
-- question: If ___ was a musical instrument, which would he/she be?
+- question: If ___ was a musical instrument, which would they be?
   answers:
     - Triangle
     - Bagpipes
@@ -965,7 +964,7 @@
 
 - question: >-
     If ___ could invite a famous historical figure home for dinner,
-    whom would he/she invite?
+    whom would they invite?
   answers:
     - Mother Theresa
     - Groucho Marx
@@ -976,7 +975,7 @@
 
 - question: >-
     If ___ had to decide the best way to spend New Year's Eve, 1999,
-    what would he/she choose?
+    what would they choose?
   answers:
     - Go to bed at 9PM with a nice cup of warm milk
     - Spend the evening alone looking up at the stars and thinking
@@ -985,7 +984,7 @@
     - Go to a wild party and pass out at 11:59 PM
     - Sit by the computer to witness the effect of the millennium bug.
 
-- question: If ___ were an animal sound, which would he/she be?
+- question: If ___ were an animal sound, which would they be?
   answers:
     - Meow
     - Moo
@@ -994,7 +993,7 @@
     - Hiss
     - Hoot
 
-- question: If ___ were a body of water, which would he/she be?
+- question: If ___ were a body of water, which would they be?
   answers:
     - A puddle
     - An Olympic-sized swimming pool
@@ -1003,7 +1002,7 @@
     - A wilderness lake
     - An ocean
 
-- question: If ___ were a dessert, which would he/she be?
+- question: If ___ were a dessert, which would they be?
   answers:
     - Fresh fruit
     - Port and cigars
@@ -1012,7 +1011,7 @@
     - Brandied kumquats
     - Jell-O
 
-- question: If ___ were a plant, which would he/she be?
+- question: If ___ were a plant, which would they be?
   answers:
     - Towering oak tree
     - Kudzu
@@ -1021,7 +1020,7 @@
     - Ragweed
     - Dried flower
 
-- question: If ___ were a board game, which would he/she be?
+- question: If ___ were a board game, which would they be?
   answers:
     - Monopoly
     - Scrabble
@@ -1030,7 +1029,7 @@
     - Chess
     - Candy Land
 
-- question: If ___ had an office plant, what kind would he/she have?
+- question: If ___ had an office plant, what kind would they have?
   answers:
     - Bonsai
     - Tropical
@@ -1039,7 +1038,7 @@
     - Cactus
     - Plastic
 
-- question: If ___ were a cable channel, which would he/she be?
+- question: If ___ were a cable channel, which would they be?
   answers:
     - Comedy Central
       # - Playboy Channel
@@ -1048,7 +1047,7 @@
     - ESPN
     - SyFy Channel
 
-- question: If ___ were something to sit on, which would he/she be?
+- question: If ___ were something to sit on, which would they be?
   answers:
     - Throne
     - Bar stool
@@ -1057,7 +1056,7 @@
     - Park bench
     - Toilet
 
-- question: If ___ were a musical style, which would he/she be?
+- question: If ___ were a musical style, which would they be?
   answers:
     - Classical
     - Rap
@@ -1066,7 +1065,7 @@
     - Jazz
     - Country and Western
 
-- question: If ___ were a form of advertisement, which would he/she be?
+- question: If ___ were a form of advertisement, which would they be?
   answers:
     - Magazine ad
     - Endorsement by a sports star
@@ -1078,7 +1077,7 @@
 
 - question: >-
     If ___ had the deciding vote for an Oscar for the best actress, who
-    would he/she choose?
+    would they choose?
   answers:
     - Kathryn Hepburn
     - Pamela Anderson
@@ -1087,7 +1086,7 @@
     - Elizabeth Taylor
     - Marge Simpson
 
-- question: If ___ were a singer, who would he/she be?
+- question: If ___ were a singer, who would they be?
   answers:
     - Julio Iglesias
     - Placido Domingo
@@ -1096,7 +1095,7 @@
     - Alice Cooper
     - Julie Andrews
 
-- question: If ___ were a cliché, which would he/she be?
+- question: If ___ were a cliché, which would they be?
   answers:
     - Wolf in sheep's clothing
     - Born with a silver spoon in the mouth
@@ -1105,8 +1104,7 @@
     - Look what the cat dragged in
     - A sight for sore eyes
 
-- question: >-
-    If ___ were on a 10-hour car trip, which would upset him/her the most?
+- question: If ___ were on a 10-hour car trip, which would upset them the most?
   answers:
     - Being stuck behind a little old lady travelling at 30 MPH
     - Running over a bunny rabbit
@@ -1115,7 +1113,7 @@
     - Sound system breaks down
     - Mobile phone goes out of range
 
-- question: If ___ were sporting equipment, which would he/she be?
+- question: If ___ were sporting equipment, which would they be?
   answers:
     - Bowling pin
     - Hockey puck
@@ -1124,7 +1122,7 @@
     - Shoulder pads
     - Mouth guard
 
-- question: If ___ were a book, which would he/she be?
+- question: If ___ were a book, which would they be?
   answers:
     - How to Win Friends and Influence People
     - Alice in Wonderland
@@ -1133,7 +1131,7 @@
     - The Shining
     - The Bible
 
-- question: If ___ were thirsty, which would he/she prefer to drink?
+- question: If ___ were thirsty, which would they prefer to drink?
   answers:
     - Beer
     - Mineral water
@@ -1142,7 +1140,7 @@
     - Cola
     - 1954 Chateaux Lafitte Rothschild
 
-- question: If ___ were a dance, which would he/she be?
+- question: If ___ were a dance, which would they be?
   answers:
     - Tango
     - Square
@@ -1151,7 +1149,7 @@
     - Disco
     - Polka
 
-- question: If ___ were a superhero, who would he/she be?
+- question: If ___ were a superhero, who would they be?
   answers:
     - Superman
     - The Incredible Hulk
@@ -1160,7 +1158,7 @@
     - Batman
     - Wonder Woman
 
-- question: If ___ bought a newspaper, which would he/she read first?
+- question: If ___ bought a newspaper, which would they read first?
   answers:
     - Personals
     - Financial section
@@ -1169,7 +1167,7 @@
     - Obituaries
     - Want ads
 
-- question: If ___ were a world record, which would he/she be?
+- question: If ___ were a world record, which would they be?
   answers:
     - The world's largest piggy bank
     - The world's longest sausage
@@ -1178,7 +1176,7 @@
     - The world's hottest chili pepper
     - The world's most dense substance
 
-- question: If ___ were a room, which would he/she be?
+- question: If ___ were a room, which would they be?
   answers:
     - Study
     - Kitchen
@@ -1189,7 +1187,7 @@
 
 - question: >-
     If ___ had to decide which of the following events most concerned
-    him/her, which would he/she choose?
+    them, which would they choose?
   answers:
     - Beatles break-up
     - Soup getting cold
@@ -1198,7 +1196,7 @@
     - 1987 stock market crash
     - The Exxon-Valdez oil spill
 
-- question: If ___ were a type of confection, which would he/she be?
+- question: If ___ were a type of confection, which would they be?
   answers:
     - M&M's
     - Gum
@@ -1207,7 +1205,7 @@
     - Chocolate liqueur
     - Jelly bean
 
-- question: If ___ had to select a way of dying, which would he/she choose?
+- question: If ___ had to select a way of dying, which would they choose?
   answers:
     - Peacefully in sleep
     - Hit by a golf ball
@@ -1216,7 +1214,7 @@
     - TV falls into bubble bath
     - Overeating
 
-- question: If ___ were a historic disaster, which would he/she be?
+- question: If ___ were a historic disaster, which would they be?
   answers:
     - Sinking of the Titanic
     - Bubonic Plague
@@ -1226,7 +1224,7 @@
     - Eruption of Mount St. Helens
 
 - question: >-
-    If ___ were to be honored, which of the following would he/she be
+    If ___ were to be honored, which of the following would they be
     happiest to accept?
   answers:
     - A papel blessing
@@ -1234,7 +1232,7 @@
     - Good Housekeeping seal of approval
     - Life review on 60 Minutes
     - Cash award
-    - A race horse named after him/her
+    - A race horse named after them
 
 - question: If ___ were a 1990's movie, which would it be?
   answers:
@@ -1246,7 +1244,7 @@
     - There's Something About Mary
 
 - question: >-
-    If ___ were going on a picnic, which would he/she consider essential?
+    If ___ were going on a picnic, which would they consider essential?
   answers:
     - Sandwich and coffee
     - Champagne and caviar
@@ -1255,7 +1253,7 @@
     - A bat and ball
     - A good book
 
-- question: If ___ were a 1960's movie, which would he/she be?
+- question: If ___ were a 1960's movie, which would they be?
   answers:
     - Barbarella
     - The Sound of Music
@@ -1264,7 +1262,7 @@
     - Psycho
     - Dr. Zhivago
 
-- question: If ___ were an author, what type of books would he/she write?
+- question: If ___ were an author, what type of books would they write?
   answers:
     - Children's
     - Science fiction
@@ -1282,7 +1280,7 @@
     - The Flintstones
     - The Addams Family
 
-- question: If ___ were an entrée, which would he/she be?
+- question: If ___ were an entrée, which would they be?
   answers:
     - Big Mac
     - Duck à l'orange
@@ -1293,7 +1291,7 @@
 
 - question: >-
     If ___ had time to do only one of the following every morning, which
-    would he/she choose?
+    would they choose?
   answers:
     - Exercise
     - Read the newspaper
@@ -1302,7 +1300,7 @@
     - Have a massage
     - Play with the children
 
-- question: If ___ were a monster, which would he/she be?
+- question: If ___ were a monster, which would they be?
   answers:
     - Dracula
     - The Blob
@@ -1311,7 +1309,7 @@
     - Dr. Jekyll and Mr. Hyde
     - Cookie Monster
 
-- question: If ___ were a sports penalty, what would he/she be?
+- question: If ___ were a sports penalty, what would they be?
   answers:
     - Hooking
     - Balk
@@ -1329,7 +1327,7 @@
     - Seated, formally dressed
     - Cover of The Enquirer
 
-- question: If ___ were a toy, which would he/she be?
+- question: If ___ were a toy, which would they be?
   answers:
     - Barbie doll
     - Chemistry set
@@ -1339,7 +1337,7 @@
     - Play-Doh
 
 - question: >-
-    If ___ awoke to find the house in flames, which would he/she save first?
+    If ___ awoke to find the house in flames, which would they save first?
   answers:
     - Insurance policy
     - Favorite shoes
@@ -1350,16 +1348,16 @@
 
 - question: >-
     If ___ accidentally emitted an unpleasant anti-social noise at a dinner
-    party, what would he/she do?
+    party, what would they do?
   answers:
     - Say nothing and blush brightly
     - Apologize
     - Laugh and repeat the offense (louder, if possible)
-    - Blame the person sitting next to him/her
-    - Try to re-produce the sound by shifting in his/her seat
+    - Blame the person sitting next to them
+    - Try to re-produce the sound by shifting in their seat
     - Carry on as if nothing happened
 
-- question: If ___ was an Olympic event, which would he/she be?
+- question: If ___ was an Olympic event, which would they be?
   answers:
     - 100 meter sprint
     - Boxing
@@ -1368,7 +1366,7 @@
     - Luge
     - Marathon
 
-- question: If ___ were an article of clothing, which would he/she be?
+- question: If ___ were an article of clothing, which would they be?
   answers:
     - Pin-striped suit
     - Prison uniform
@@ -1377,7 +1375,7 @@
     - Faded jeans
     - Mini skirt
 
-- question: If ___ were a cartoon character, who would he/she be?
+- question: If ___ were a cartoon character, who would they be?
   answers:
     - George Jetson
     - Wile E. Coyote
@@ -1386,7 +1384,7 @@
     - Underdog
     - Homer Simpson
 
-- question: If ___ were a form of communication, which would he/she be?
+- question: If ___ were a form of communication, which would they be?
   answers:
     - Telephone
     - Mental telepathy
@@ -1395,7 +1393,7 @@
     - Car horn
     - Smoke signal
 
-- question: If ___ were a comic strip character, who would he/she be?
+- question: If ___ were a comic strip character, who would they be?
   answers:
     - Dilbert
     - Blondie
@@ -1404,7 +1402,7 @@
     - Hagar the Horrible
     - Andy Capp
 
-- question: If ___ were a musician, which would he/she be?
+- question: If ___ were a musician, which would they be?
   answers:
     - Liberace
     - Weird Al Yankovic
@@ -1413,7 +1411,7 @@
     - Madonna
     - Billy Joel
 
-- question: If ___'s doctor suggested more exercise, which would he/she do?
+- question: If ___'s doctor suggested more exercise, which would they do?
   answers:
     - Triathlon
     - Pump iron
@@ -1433,7 +1431,7 @@
 
 - question: >-
     If ___ accidentally backed over the neighbor's cat in the driveway,
-    which would he/she do?
+    which would they do?
   answers:
     - Bury it and say nothing
     - Confess
@@ -1442,7 +1440,7 @@
     - Blame the neighbor for inadequate cat control
     - Run over it again to make sure it was dead
 
-- question: If ___ were an emotion, which would he/she be?
+- question: If ___ were an emotion, which would they be?
   answers:
     - Hate
     - Fear
@@ -1451,7 +1449,7 @@
     - Lust
     - Love
 
-- question: If ___ were a special vehicle, which would he/she be?
+- question: If ___ were a special vehicle, which would they be?
   answers:
     - Tank
     - Ambulance
@@ -1460,7 +1458,7 @@
     - Ice cream truck
     - Limousine
 
-- question: If ___ were a superlative, which would he/she be?
+- question: If ___ were a superlative, which would they be?
   answers:
     - Easiest
     - Cheesiest
@@ -1478,7 +1476,7 @@
     - Jeremiah
     - Elvis
 
-- question: If ___ were a timepiece, which would he/she be?
+- question: If ___ were a timepiece, which would they be?
   answers:
     - Stopwatch
     - Biological clock
@@ -1487,7 +1485,7 @@
     - Sundial
     - Time bomb
 
-- question: If ___ were an Olympic site, which would he/she be?
+- question: If ___ were an Olympic site, which would they be?
   answers:
     - Barcelona
     - Los Angeles
@@ -1497,14 +1495,14 @@
     - Lake Placid
 
 - question: >-
-    If ___ could travel in a time machine, which event would he/she choose
+    If ___ could travel in a time machine, which event would they choose
     to witness?
   answers:
     - The Rumble in the Jungle (Ali vs. Foreman - Zaire - 1974)
     - The apple falling on Newton's head
     - Moses parting the Red Sea
     - Elvis' first live performance
-    - His/her own birth
+    - Their own birth
     - Next year's Kentucky Derby
 
 - question: If ___'s personality were a female name, which would be best?
@@ -1516,7 +1514,7 @@
     - Bubbles
     - Prudence
 
-- question: If ___ were a kind a metal, which would he/she be?
+- question: If ___ were a kind a metal, which would they be?
   answers:
     - Gold
     - Bronze
@@ -1525,7 +1523,7 @@
     - Quicksilver
     - Heavy metal
 
-- question: If ___ were a character from Star Wars, which would he/she be?
+- question: If ___ were a character from Star Wars, which would they be?
   answers:
     - Luke Skywalker
     - Princess Leia
@@ -1534,7 +1532,7 @@
     - C-3PO
     - Darth Vader
 
-- question: If ___ was a display of friendship, which would he/she be?
+- question: If ___ was a display of friendship, which would they be?
   answers:
     - Lingering kiss
     - Hug
@@ -1544,7 +1542,7 @@
     - Slap on the back
 
 - question: >-
-    If ___ witnessed a mugging on the city street, what would he/she do?
+    If ___ witnessed a mugging on the city street, what would they do?
   answers:
     - Wrestle the mugger to the ground
     - Ignore it and keep walking
@@ -1553,7 +1551,7 @@
     - Scream hysterically
     - Take a photo and sell it to the media
 
-- question: If ___ were a movie catchphrase, which would he/she be?
+- question: If ___ were a movie catchphrase, which would they be?
   answers:
     - "\"Here's looking at you, kid\""
     - "\"Go ahead, make my day\""
@@ -1564,7 +1562,7 @@
 
 - question: >-
     If ___ could discover the answer to a great mystery, which mystery would
-    he/she choose?
+    they choose?
   answers:
     - Who killed JFK?
     - What are the Colonel's eleven secret herbs and spices?
@@ -1573,7 +1571,7 @@
     - How come I pay more taxes than Donald Trump?
     - What happens after death?
 
-- question: If ___ could afford to buy a dream home, which would he/she buy?
+- question: If ___ could afford to buy a dream home, which would they buy?
   answers:
     - Ultra-modern city penthouse
     - Sprawling farmhouse
@@ -1584,7 +1582,7 @@
 
 - question: >-
     If ___ could acquire one of the following natural abilities, which
-    would he/she choose?
+    would they choose?
   answers:
     - Amazing eye/hand coordination
     - The ability to contact the spirit world
@@ -1593,7 +1591,7 @@
     - Musical virtuosity
     - Optimism
 
-- question: If ___ were a high school class, which would he/she be?
+- question: If ___ were a high school class, which would they be?
   answers:
     - Social Studies
     - Home Economics
@@ -1602,7 +1600,7 @@
     - Gym
     - Study Hall
 
-- question: If ___ suffered a minor crisis, which would upset him/her most?
+- question: If ___ suffered a minor crisis, which would upset them most?
   answers:
     - Burning the roast
     - Scratch on the car
@@ -1613,7 +1611,7 @@
 
 - question: >-
     If ___ were choosing hotel accommodations, which of the following would
-    he/she deem most important?
+    they deem most important?
   answers:
     - The name
     - The size of the bed
@@ -1622,7 +1620,7 @@
     - Number of cable TV channels
     - Well-stocked mini bar
 
-- question: If ___ were at a construction site, what would he/she be doing?
+- question: If ___ were at a construction site, what would they be doing?
   answers:
     - Setting up cones
     - Taking a coffee break
@@ -1631,7 +1629,7 @@
     - Doing something with a jack-hammer
     - Complaining about working conditions
 
-- question: If ___ could solve one problem, which would he/she choose?
+- question: If ___ could solve one problem, which would they choose?
   answers:
     - Computer viruses
     - War
@@ -1640,7 +1638,7 @@
     - Immorality
     - The disco revival
 
-- question: If ___ were something to look through, which would he/she be?
+- question: If ___ were something to look through, which would they be?
   answers:
     - Telescope
     - Sunglasses
@@ -1649,7 +1647,7 @@
     - Safety goggles
     - Rose-colored glasses
 
-- question: If ___ were a circus performer, which would he/she be?
+- question: If ___ were a circus performer, which would they be?
   answers:
     - Clown
     - Trapeze artist
@@ -1658,7 +1656,7 @@
     - Fire eater
     - Performing poodle
 
-- question: If ___ were a famous landmark, which would he/she be?
+- question: If ___ were a famous landmark, which would they be?
   answers:
     - Empire State Building
     - Taj Mahal
@@ -1667,7 +1665,7 @@
     - Yankee Stadium
     - Stonehenge
 
-- question: If ___ were a home, which would he/she be?
+- question: If ___ were a home, which would they be?
   answers:
     - 4 bedroom, brick with family room
     - Mobile home
@@ -1676,7 +1674,7 @@
     - Tent
     - Grand mansion
 
-- question: If ___ were a decade, which would he/she be?
+- question: If ___ were a decade, which would they be?
   answers:
     - Politically correct '90s
     - Greedy '80s
@@ -1685,7 +1683,7 @@
     - Conservative '50s
     - Roaring '20s
 
-- question: If ___ were a TV catchphrase, which would he/she be?
+- question: If ___ were a TV catchphrase, which would they be?
   answers:
     - "\"Beam me up, Scotty\""
     - "\"Doh!\""
@@ -1695,8 +1693,8 @@
     - "\"Your mission, should you choose to accept it...\""
 
 - question: >-
-    If ___ stepped onto a bus and the only other passenger was his/her
-    favorite TV star, what would he/she do?
+    If ___ stepped onto a bus and the only other passenger was their
+    favorite TV star, what would they do?
   answers:
     - Ignore the star
     - Politely say hello but respect their privacy
@@ -1705,7 +1703,7 @@
     - Nervously ask for an autograph
     - Drop their jaw and scream "I love you!"
 
-- question: If ___ were a magazine, which would he/she be?
+- question: If ___ were a magazine, which would they be?
   answers:
     - Time
     - Sports Illustrated
@@ -1715,7 +1713,7 @@
     - Vogue
     - MAD
 
-- question: If ___ were an advertising slogan, which would he/she be?
+- question: If ___ were an advertising slogan, which would they be?
   answers:
     - "\"Breakfast of champions\""
     - "\"Think different\""
@@ -1730,7 +1728,7 @@
       # - "\"Just do it\""
       # - "\"I'm lovin' it\""
 
-- question: If ___ were a flavor of ice cream, which would he/she be?
+- question: If ___ were a flavor of ice cream, which would they be?
   answers:
     - Plain vanilla
     - Rocky road

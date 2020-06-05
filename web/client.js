@@ -236,7 +236,6 @@ function handleStateMessage(msg) {
       }
 
       if(answerTimer != null) {
-        console.log(answerTimer);
         clearInterval(answerTimer);
         answerTimer = null;
         document.getElementById("timer").innerHTML = ":00";
