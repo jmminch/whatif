@@ -1,3 +1,7 @@
+# This file is pre-processed by the convert.sh script into JSON, which
+# is the format accepted by whatif.
+# Note that this file must be encoded as latin-1.
+
 - question: If ___ were a color, which color would they be?
   answers:
     - Lime green
@@ -1043,9 +1047,10 @@
     - Comedy Central
       # - Playboy Channel
     - CNN
-    - The Discovery Channel
+    - Discovery Channel
     - ESPN
     - SyFy Channel
+    - Home Shopping Network
 
 - question: If ___ were something to sit on, which would they be?
   answers:
