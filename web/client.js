@@ -238,7 +238,7 @@ function handleStateMessage(msg) {
       if(answerTimer != null) {
         clearInterval(answerTimer);
         answerTimer = null;
-        document.getElementById("timer").innerHTML = ":00";
+        document.getElementById("header-timer").innerHTML = ":00";
       }
       break;
 
@@ -268,10 +268,30 @@ function changeScreen(id) {
   }
 
   /* Set up the header */
-  document.getElementById("header-title").style.display =
-    (id == "login" || id == "lobby") ? "block" : "none";
+  var title = document.getElementById("header-title");
+  switch(id) {
+    case "login":
+    case "lobby":
+      title.innerHTML = "WHAT IF?";
+      title.style.display = "block";
+      break;
+
+    case "final":
+      title.innerHTML = "Final Results";
+      title.style.display = "block";
+      break;
+
+    default:
+      title.style.display = "none";
+      break;
+  }
+
   document.getElementById("menuline").style.display =
     (id != "login") ? "block" : "none";
+  document.getElementById("header-questionbar").style.display =
+    (id == "answer" || id == "results") ? "block" : "none";
+  document.getElementById("header-timer").style.display =
+    (id == "answer") ? "inline-block" : "none";
 
   document.getElementById("login").style.display =
     (id == "login") ? "block" : "none";
@@ -309,7 +329,7 @@ function startCountdown(msg) {
 
 function startAnswer(msg) {
   /* Create the header */
-  document.getElementById("answer-question").innerHTML = msg.question;
+  document.getElementById("header-question").innerHTML = msg.question;
 
   /* Build the list of answer buttons */
   var answerList = "";
@@ -325,7 +345,7 @@ function startAnswer(msg) {
 
   /* Set up the timer. */
   var t = msg["timeout"];
-  document.getElementById("timer").innerHTML =
+  document.getElementById("header-timer").innerHTML =
     ":" + (t + 100).toString().substring(1);
 
   if(answerTimer != null) clearInterval(answerTimer);
@@ -333,7 +353,7 @@ function startAnswer(msg) {
   if(t > 0) {
     answerTimer = setInterval(function() {
         t = (t > 0) ? t - 1 : 0;
-        document.getElementById("timer").innerHTML =
+        document.getElementById("header-timer").innerHTML =
           ":" + (t + 100).toString().substring(1);
         if(t < 1) {
           clearInterval(answerTimer);
@@ -356,7 +376,7 @@ function startAnswer(msg) {
 }
 
 function createResultList(msg) {
-  document.getElementById("results-question").innerHTML = msg.question;
+  document.getElementById("header-question").innerHTML = msg.question;
 
   var results = msg.answers.map(x => [ x, 0 ]);
   var noanswer = [ ];
