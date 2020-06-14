@@ -8,7 +8,7 @@ import 'questions.dart';
 import 'main.dart';
 
 class GameServerClass {
-  Map<String, GameRoom> rooms = Map<String, GameRoom>();
+  Map<String, GameRoom> rooms = <String, GameRoom>{};
   QuestionList questionList;
 
   GameServerClass( );
@@ -106,7 +106,7 @@ enum GameState {
 class GameRoom {
   String name;
 
-  Map<String, Player> players = Map<String, Player>();
+  Map<String, Player> players = <String, Player>{};
   GameState state = GameState.Lobby;
   QuestionList questions;
   Player host;
@@ -202,7 +202,7 @@ class GameRoom {
      * state. */
     if(state == GameState.Question) {
       bool checkin = true;
-      players.values.forEach( (p) { 
+      for(var p in players.values) {
         /* Make sure that all players that are active, or are disconnected
          * but haven't missed a question yet, have responded. */
         if(p.answerId == -1 &&
@@ -211,7 +211,7 @@ class GameRoom {
              p.missedQuestions == 0))) {
           checkin = false;
         } 
-      });
+      }
 
       if(checkin) answerTimerExpire();
     }
@@ -229,7 +229,7 @@ class GameRoom {
    * Every time the game changes state the client gets sent a message
    * to update what the client is showing to the player. */
 
-  broadcastState( ) => players.values.forEach((p) => notifyState(p));
+  broadcastState( ) => players.values.forEach(notifyState);
 
   notifyState( Player p ) {
     var msg = stateMessage();
@@ -291,7 +291,7 @@ class GameRoom {
      *   state = "lobby"
      *   players = [ playerlist ]
      */
-    var msgMap = Map<String, dynamic>();
+    var msgMap = {};
     msgMap["state"] = "lobby";
     var playerList = players.values.where((p) => 
         (p.state != PlayerState.disconnected)).map((p) => (p.name)).toList();
@@ -309,7 +309,7 @@ class GameRoom {
      *   timeout = int (seconds)
      */
 
-    var msgMap = Map<String, dynamic>();
+    var msgMap = {};
     msgMap["state"] = "question";
     msgMap["target"] = currentTarget.name;
     msgMap["question"] = currentQuestion.targeted(currentTarget.name);
@@ -336,13 +336,13 @@ class GameRoom {
      *   final = bool
      */
 
-    var msgMap = Map<String, dynamic>();
+    var msgMap = {};
     msgMap["state"] = "results";
     msgMap["target"] = currentTarget.name;
     msgMap["question"] = currentQuestion.targeted(currentTarget.name);
     msgMap["answers"] = currentQuestion.answers;
 
-    var resultList = List<List>();
+    var resultList = <List>[];
     /* Report data for players in active or disconnected state, or
      * who provided an answer. */
     var playerList = players.values.where((p) => 
@@ -350,14 +350,14 @@ class GameRoom {
              (p.state == PlayerState.disconnected && p.missedQuestions < 2) ||
              (p.answerId != -1))).toList();
 
-    playerList.forEach((player) {
-      var playerResult = List();
+    for(var player in playerList) {
+      var playerResult = [];
       playerResult.add(player.name);
       playerResult.add(player.answerId);
       playerResult.add(player.roundScore);
       playerResult.add(player.score);
       resultList.add(playerResult);
-    });
+    }
     msgMap["results"] = resultList;
 
     /* Give an indication if this was the last question (the client will
@@ -374,7 +374,7 @@ class GameRoom {
      *   results = [ [ name, total score ] ]
      */
 
-    var msgMap = Map<String, dynamic>();
+    var msgMap = {};
     msgMap["state"] = "final";
 
     /* Report data for players in active state, or who have answered
@@ -449,9 +449,10 @@ class GameRoom {
          * - Purge any disconnected players
          * - Allow pending players into the game. */
         players.removeWhere((k, p) => (p.state == PlayerState.disconnected));
-        players.values.forEach((p) {
+        for(var p in players.values) {
           if(p.state == PlayerState.pending)
-            p.state = PlayerState.active; });
+            p.state = PlayerState.active;
+        }
 
         /* Set scores to 0, etc. */
         players.values.forEach( (p) { 
@@ -528,12 +529,12 @@ class GameRoom {
 
     /* Create a shuffled list of active players to use as the question
      * targets. */
-    targets = List<Player>.from(players.values);
+    targets = players.values.toList();
     /* Select active players only. */
     targets = targets.where((p) => (p.state == PlayerState.active)).toList();
 
     /* Stupid case if there are no active players at all. */
-    if(targets.length == 0) targets = List<Player>.from(players.values);
+    if(targets.isEmpty) targets = players.values.toList();
 
     targets.shuffle();
 
@@ -543,9 +544,10 @@ class GameRoom {
 
   startQuestion( ) {
     /* Let any waiting players into the game. */
-    players.values.forEach((p) {
+    for(var p in players.values) {
       if(p.state == PlayerState.pending)
-        p.state = PlayerState.active; });
+        p.state = PlayerState.active;
+    }
 
     /* Update counters of questions played. */
     roundQuestions++;
@@ -563,7 +565,7 @@ class GameRoom {
     currentQuestion = questions.nextQuestion();
 
     /* Set up structures to wait for responses. */
-    players.values.forEach( (p) => (p.answerId = -1) );
+    for(var p in players.values) { p.answerId = -1; }
 
     /* Notify all players of question and choices. */
     broadcastState();
@@ -586,7 +588,7 @@ class GameRoom {
     /* Count the number of votes for each answer.  Also zero the roundScore
      * field for each player. */
     List<int> votes = List<int>.filled(currentQuestion.answers.length, 0);
-    players.values.forEach((player) {
+    for(var player in players.values) {
       player.roundScore = 0;
 
       /* Normalize bad values for the answer ID. */
@@ -609,21 +611,21 @@ class GameRoom {
           player.state = PlayerState.idle;
         }
       }
-    });
+    }
 
     /* Now find the maximum number of votes and how many answers had that
      * maximum (in case of ties.) */
     int max = 0;
     int maxCount = 0;
 
-    votes.forEach((v) {
+    for(var v in votes) {
       if(v > max) {
         maxCount = 1;
         max = v;
       } else if(v == max) {
         maxCount++;
       }
-    });
+    }
 
     /* Max could be 0 if nobody voted.  Nobody gets points. */
     if(max == 0) return;
@@ -640,7 +642,7 @@ class GameRoom {
       roundScore = 250;
 
     /* Set the round score and update total score for all players. */
-    players.values.forEach((player) {
+    for(var player in players.values) {
       if(max <= 1) {
         /* no points if everyone guesses a different answer. */
       } else {
@@ -660,7 +662,7 @@ class GameRoom {
       }
 
       player.score += player.roundScore;
-    });
+    }
   }
 
   GameState questionComplete( ) {
@@ -670,8 +672,7 @@ class GameRoom {
      *   - If the round is over, and the total number of questions is less
      *     than the max, then proceed to RoundSetup.
      *   - If the round is not over, then proceed to Question. */
-    if(roundQuestions >= roundQuestionLimit ||
-       targets.length < 1) {
+    if(roundQuestions >= roundQuestionLimit || targets.isEmpty) {
       if(totalQuestions >= questionLimit) return GameState.Final;
       return GameState.RoundSetup;
     }

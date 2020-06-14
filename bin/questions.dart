@@ -5,7 +5,7 @@ import 'dart:convert';
 
 class Question {
   String question;
-  List<String> answers = List<String>();
+  List<String> answers = <String>[];
 
   Question( );
 
@@ -27,7 +27,7 @@ class Question {
  * from the list until it's empty, at which point the list is refreshed from
  * the master list. */
 class QuestionList {
-  List<Question> list = List<Question>();
+  List<Question> list = <Question>[];
   QuestionList master;
   bool shuffle = false;
 
@@ -41,14 +41,14 @@ class QuestionList {
   }
 
   QuestionList.fromMaster( this.master ) {
-    list = List<Question>.from(master.list, growable: true);
+    list = master.list.toList();
     list.shuffle();
     shuffle = true;
   }
 
   Question nextQuestion( ) {
-    if(list.length < 1) {
-      list = List<Question>.from(master.list, growable: true);
+    if(list.isEmpty) {
+      list = master.list.toList();
       list.shuffle();
     }
 
