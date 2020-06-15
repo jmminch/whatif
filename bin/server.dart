@@ -843,6 +843,10 @@ class Player {
         break;
 
       case "answer":
+        if(msg["id"] is! int) {
+          /* Malformed message. */
+          break;
+        }
         room.doSelectAnswer(this, msg["id"]);
         break;
 
@@ -873,7 +877,7 @@ class Player {
  * If there's nothing left, then return an error.
  */
 String sanitizeString( str ) {
-  if(!(str is String)) return null;
+  if(str is! String) return null;
 
   var s = str.toUpperCase();
   /* Get rid of any characters outside of the 32-127 range. */
