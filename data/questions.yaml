@@ -52,7 +52,7 @@
   answers:
     - Get out of the car and threaten the driver
     - Ignore it and turn up the radio
-    - Honk 'em right back
+    - "Honk 'em right back"
     - Wink and lick the window
     - Give a genuine apologetic wave
     - Record the license plate and call the police
@@ -1741,3 +1741,27 @@
     - Dark chocolate
     - Strawberry cheesecake
     - Nut crunch
+
+- question: >-
+    If ___ could designate one of the following as an official federal holiday,
+    which would they choose?
+  answers:
+    - Bubble Bath Day
+    - Festivus
+    - The First of Octember
+    - Hogswatch
+    - National Bacon Day
+    - Talk Like a Pirate Day
+    - Chuck Norris Day
+
+- question: If ___ were a classic toy, which would they be?
+  answers:
+    - Magic 8-Ball
+    - Slinky
+      # - Superball
+    - Mr. Potato Head
+    - Rubik's Cube
+    - Jack-in-the-box
+    - Etch A Sketch
+    - Radio Flyer wagon
+      # - Hula hoop
