@@ -115,6 +115,7 @@ class GameRoom {
                             questions. */
   Player currentTarget;
   Question currentQuestion;
+  List<String> currentAnswers;
 
   int questionLimit;  /* Maximum questions per game. */
   int roundQuestionLimit;  /* Maximum questions per round. */
@@ -313,7 +314,7 @@ class GameRoom {
     msgMap["state"] = "question";
     msgMap["target"] = currentTarget.name;
     msgMap["question"] = currentQuestion.targeted(currentTarget.name);
-    msgMap["answers"] = currentQuestion.answers;
+    msgMap["answers"] = currentAnswers;
     var timeout = answerTime.difference(DateTime.now()).inSeconds;
     if(timeout < 0) timeout = 0;
     msgMap["timeout"] = timeout;
@@ -340,7 +341,7 @@ class GameRoom {
     msgMap["state"] = "results";
     msgMap["target"] = currentTarget.name;
     msgMap["question"] = currentQuestion.targeted(currentTarget.name);
-    msgMap["answers"] = currentQuestion.answers;
+    msgMap["answers"] = currentAnswers;
 
     var resultList = <List>[];
     /* Report data for players in active or disconnected state, or
@@ -564,6 +565,8 @@ class GameRoom {
     /* Pick a random question. */
     currentQuestion = questions.nextQuestion();
 
+    currentAnswers = currentQuestion.getAnswers();
+
     /* Set up structures to wait for responses. */
     for(var p in players.values) { p.answerId = -1; }
 
@@ -587,7 +590,7 @@ class GameRoom {
 
     /* Count the number of votes for each answer.  Also zero the roundScore
      * field for each player. */
-    List<int> votes = List<int>.filled(currentQuestion.answers.length, 0);
+    List<int> votes = List<int>.filled(currentAnswers.length, 0);
     for(var player in players.values) {
       player.roundScore = 0;
 

@@ -1726,12 +1726,11 @@
     - "\"Where's the beef?\""
     - "\"Not going anywhere for a while?\""
     - "\"Have it your way\""
-      # More ideas
-      # - "\"Australian for beer\""
-      # - "\"Melts in your mouth, not in your hand\""
-      # - "\"Nothing runs like a Deere\""
-      # - "\"Just do it\""
-      # - "\"I'm lovin' it\""
+    - "\"Australian for beer\""
+    - "\"Melts in your mouth, not in your hand\""
+    - "\"Nothing runs like a Deere\""
+    - "\"Just do it\""
+    - "\"I'm lovin' it\""
 
 - question: If ___ were a flavor of ice cream, which would they be?
   answers:
@@ -1758,10 +1757,10 @@
   answers:
     - Magic 8-Ball
     - Slinky
-      # - Superball
+    - Superball
     - Mr. Potato Head
     - Rubik's Cube
     - Jack-in-the-box
     - Etch A Sketch
     - Radio Flyer wagon
-      # - Hula hoop
+    - Hula hoop

@@ -2,6 +2,7 @@
 
 import 'dart:io';
 import 'dart:convert';
+import 'dart:math';
 
 class Question {
   String question;
@@ -18,6 +19,16 @@ class Question {
    * sequence of multiple underscores with the target's name. */
   String targeted( String target ) {
     return question.replaceAll(RegExp(r"__+"), target);
+  }
+
+  List<String> getAnswers( [ int maxAnswers = 6 ] ) {
+    /* If the answer list is longer than maxAnswers, remove extra answers
+     * randomly.  This maintains the order of the remaining answers. */
+    List<String> r = answers.toList();
+    while(r.length > maxAnswers) {
+      r.removeAt(Random().nextInt(r.length));
+    }
+    return r;
   }
 }
 
