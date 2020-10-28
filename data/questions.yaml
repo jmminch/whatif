@@ -289,7 +289,7 @@
     - Build a snowman
     - Head for the lodge bar
     - Hike across a mountain
-    - Make "donuts" in a desolate parking lot
+    - Make “donuts” in a desolate parking lot
 
 - question: If ___ were a collection, which would they be?
   answers:
@@ -596,12 +596,12 @@
 
 - question: If ___ were a political quote, which would they be?
   answers:
-    - "\"I didn't inhale\" (Clinton)"
-    - "\"The buck stops here\" (Truman)"
-    - "\"Speak softly and carry a big stick\" (T. Roosevelt)"
-    - "\"Ask not what your country can do for you...\" (JFK)"
-    - "\"Religion is the opium of the people\" (Marx)"
-    - "\"Power is the ultimate Aphrodisiac\" (Kissinger)"
+    - "“I didn't inhale” (Clinton)"
+    - "“The buck stops here” (Truman)"
+    - "“Speak softly and carry a big stick” (T. Roosevelt)"
+    - "“Ask not what your country can do for you...” (JFK)"
+    - "“Religion is the opium of the people” (Marx)"
+    - "“Power is the ultimate Aphrodisiac” (Kissinger)"
 
 - question: If ___ were a Beatle, who would they be?
   answers:
@@ -660,17 +660,17 @@
  
 - question: If ___ were the chorus of a song, which would they be?
   answers:
-    - "\"You're so vain, you prob'ly think this song is about you\""
-    - "\"I can't get no satisfaction\""
-    - "\"How much is that doggy in the window? The one with the waggly tail.\""
-    - "\"Country roads, take me home, to the place I belong\""
-    - "\"Red red wine, stay close to me\""
-    - "\"Goodness, gracious, great balls of fire!\""
+    - "“You're so vain, you prob'ly think this song is about you”"
+    - "“I can't get no satisfaction”"
+    - "“How much is that doggy in the window? The one with the waggly tail.”"
+    - "“Country roads, take me home, to the place I belong”"
+    - "“Red red wine, stay close to me”"
+    - "“Goodness, gracious, great balls of fire!”"
 
 - question: If ___ were a 1950's movie, which would they be?
   answers:
     - The Ten Commandments
-    - Gentlement Prefer Blondes
+    - Gentlemen Prefer Blondes
     - Father of the Bride
     - The Wild One
     - The Greatest Show on Earth
@@ -1100,7 +1100,7 @@
     - Alice Cooper
     - Julie Andrews
 
-- question: If ___ were a clich�, which would they be?
+- question: If ___ were a cliché, which would they be?
   answers:
     - Wolf in sheep's clothing
     - Born with a silver spoon in the mouth
@@ -1140,7 +1140,7 @@
   answers:
     - Beer
     - Mineral water
-    - Pi�a colada
+    - Piña colada
     - Orange juice
     - Cola
     - 1954 Chateaux Lafitte Rothschild
@@ -1285,10 +1285,10 @@
     - The Flintstones
     - The Addams Family
 
-- question: If ___ were an entr�e, which would they be?
+- question: If ___ were an entrée, which would they be?
   answers:
     - Big Mac
-    - Duck � l'orange
+    - Duck à l'orange
     - Spaghetti and meatballs
     - Stuffed turkey
     - Canned ham
@@ -1558,12 +1558,12 @@
 
 - question: If ___ were a movie catchphrase, which would they be?
   answers:
-    - "\"Here's looking at you, kid\""
-    - "\"Go ahead, make my day\""
-    - "\"May the force be with you\""
-    - "\"A martini, shaken, not stirred\""
-    - "\"There's no place like home\""
-    - "\"This is another fine mess you've gotten me into\""
+    - "“Here's looking at you, kid”"
+    - "“Go ahead, make my day”"
+    - "“May the force be with you”"
+    - "“A martini, shaken, not stirred”"
+    - "“There's no place like home”"
+    - "“This is another fine mess you've gotten me into”"
 
 - question: >-
     If ___ could discover the answer to a great mystery, which mystery would
@@ -1665,7 +1665,7 @@
   answers:
     - Empire State Building
     - Taj Mahal
-    - The "Hollywood" sign
+    - The “Hollywood” sign
     - Leaning Tower of Pisa
     - Yankee Stadium
     - Stonehenge
@@ -1690,12 +1690,12 @@
 
 - question: If ___ were a TV catchphrase, which would they be?
   answers:
-    - "\"Beam me up, Scotty\""
-    - "\"Doh!\""
-    - "\"And now for something completely different\""
-    - "\"Who loves ya baby\""
-    - "\"And loving it!\""
-    - "\"Your mission, should you choose to accept it...\""
+    - "“Beam me up, Scotty”"
+    - "“Doh!”"
+    - "“And now for something completely different”"
+    - "“Who loves ya baby”"
+    - "“And loving it!”"
+    - "“Your mission, should you choose to accept it...”"
 
 - question: >-
     If ___ stepped onto a bus and the only other passenger was their
@@ -1706,7 +1706,7 @@
     - Tell the star about a great creative idea
     - Offer a critique of the star's work
     - Nervously ask for an autograph
-    - Drop their jaw and scream "I love you!"
+    - Drop their jaw and scream “I love you!”
 
 - question: If ___ were a magazine, which would they be?
   answers:
@@ -1720,17 +1720,17 @@
 
 - question: If ___ were an advertising slogan, which would they be?
   answers:
-    - "\"Breakfast of champions\""
-    - "\"Think different\""
-    - "\"A diamond is forever\""
-    - "\"Where's the beef?\""
-    - "\"Not going anywhere for a while?\""
-    - "\"Have it your way\""
-    - "\"Australian for beer\""
-    - "\"Melts in your mouth, not in your hand\""
-    - "\"Nothing runs like a Deere\""
-    - "\"Just do it\""
-    - "\"I'm lovin' it\""
+    - "“Breakfast of champions”"
+    - "“Think different”"
+    - "“A diamond is forever”"
+    - "“Where's the beef?”"
+    - "“Not going anywhere for a while?”"
+    - "“Have it your way”"
+    - "“Australian for beer”"
+    - "“Melts in your mouth, not in your hand”"
+    - "“Nothing runs like a Deere”"
+    - "“Just do it”"
+    - "“I'm lovin' it”"
 
 - question: If ___ were a flavor of ice cream, which would they be?
   answers:
@@ -1764,3 +1764,39 @@
     - Etch A Sketch
     - Radio Flyer wagon
     - Hula hoop
+
+- question: >-
+    If ___ had to choose to live in another time, which would they choose?
+  answers:
+    - Dark Ages
+    - Age of dinosaurs
+    - The Industrial Revolution
+    - The Renaissance
+    - Far future
+    - The Roman Empire
+    - Ice age
+    - Ancient Egypt
+
+- question: >-
+    If ___ was on a road trip, which roadside attraction would they most
+    like to visit?
+  answers:
+    - World's biggest ball of paint
+    - Giant statue of Paul Bunyan
+    - Mystery spot
+    - The Thing?
+    - The SPAM museum
+    - Oldest McDonald's restaurant
+    - Birthplace of Captain Kirk
+
+- question: >-
+    If ___ could live in a fantasy world for a week, which would they choose?
+  answers:
+    - Discworld
+    - Hogwarts
+    - Hyrule
+    - Middle-earth
+    - Narnia
+    - Neverland
+    - The Land of Oz
+    - Wonderland
