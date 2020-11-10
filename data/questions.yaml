@@ -1,6 +1,6 @@
 # This file is pre-processed by the convert.sh script into JSON, which
 # is the format accepted by whatif.
-# Note that this file must be encoded as latin-1.
+# Note that this file must be encoded as utf-8
 
 - question: If ___ were a color, which color would they be?
   answers:
@@ -1800,3 +1800,27 @@
     - Neverland
     - The Land of Oz
     - Wonderland
+
+- question: If ___ were a villain from a children's movie, which would they be?
+  answers:
+    - The Grinch (How the Grinch Stole Christmas!)
+    - Evil Queen (Snow White)
+    - Gaston (Beauty and the Beast)
+    - Sid (Toy Story)
+    - Prince John (Robin Hood)
+    - Madam Mim (The Sword in the Stone)
+    - Iago (Aladdin)
+    - Oogie Boogie (The Nightmare Before Christmas)
+    - The Grand High Witch (The Witches)
+
+- question: If ___ were a well-known number, which would it be?
+  answers:
+    - "1"
+    - "90210"
+    - "3.14159265"
+    - "867-5309"
+    - "411"
+    - "4:20"
+    - "1337"
+    - "666"
+    - "i"

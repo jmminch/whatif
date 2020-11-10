@@ -129,7 +129,14 @@ class GameRoom {
   Timer stateTimer;
 
   GameRoom( this.name ) {
-    questions = QuestionList.fromMaster(GameServer.questionList);
+    if(this.name.startsWith("_DEBUG")) {
+      /* In the debug room, return questions in reverse order without
+       * shuffling.  This makes it easy to test newly-added questions. */
+      questions = QuestionList.fromMaster(GameServer.questionList,
+                                          shuffle: false);
+    } else {
+      questions = QuestionList.fromMaster(GameServer.questionList);
+    }
   }
 
   /* Look up a player by name, possibly creating a new player object. */

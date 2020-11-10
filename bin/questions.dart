@@ -40,7 +40,7 @@ class Question {
 class QuestionList {
   List<Question> list = <Question>[];
   QuestionList master;
-  bool shuffle = false;
+  bool shuffle = true;
 
   QuestionList( );
 
@@ -51,10 +51,9 @@ class QuestionList {
     return q;
   }
 
-  QuestionList.fromMaster( this.master ) {
+  QuestionList.fromMaster( this.master, { this.shuffle = true } ) {
     list = master.list.toList();
-    list.shuffle();
-    shuffle = true;
+    if(shuffle) list.shuffle();
   }
 
   Question nextQuestion( ) {
