@@ -6,4 +6,12 @@
 
 # Switched to yaml2json (https://github.com/bronze1man/yaml2json) for
 # better UTF-8 support.
+if ! command -v yaml2json &> /dev/null; then
+  echo
+  echo "yaml2json (https://github.com/bronze1man/yaml2json) is required to"
+  echo "rebuild the question list."
+  echo
+  exit
+fi
+
 yaml2json < questions.yaml > questions.json
