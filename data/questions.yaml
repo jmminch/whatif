@@ -1824,3 +1824,12 @@
     - "1337"
     - "666"
     - "i"
+
+- question: If ___ were a dish at a Chinese restaurant, which would they be?
+  answers:
+    - Steamed rice
+    - Hot and sour soup
+    - General Tso's chicken
+    - Peking duck
+    - Tofu stir-fry
+    - The Chinese zodiac placemat
