@@ -1833,3 +1833,33 @@
     - Peking duck
     - Tofu stir-fry
     - The Chinese zodiac placemat
+
+- question: If ___ were a hairstyle, which would they be?
+  answers:
+    - Crew cut
+    - Mullet
+    - Mohawk
+    - Afro
+    - Beehive
+    - Bowl cut
+    - Ponytail
+
+- question: If ___ had to choose a new occupation, which would they choose?
+  answers:
+    - Dog food taster
+    - Ghost hunter
+    - Alligator wrangler
+    - Cat therapist
+    - Golf ball diver
+    - Reindeer walker
+    - Snake milker
+
+- question: If ___ were a superpower, which would they be?
+  answers:
+    - Super strength
+    - Invisibility
+    - Telepathy
+    - X-ray vision
+    - Flight
+    - Time travel
+    - Super speed
