@@ -30,6 +30,12 @@ void main(List<String> args) async {
   final port = int.parse(Platform.environment['PORT'] ?? '36912');
   final server = await serve(pipeline, ip, port);
   print('Server listening on port ${server.port}');
+
+  // Shut down on SIGTERM
+  ProcessSignal.sigterm.watch().listen((sig) { 
+    server.close(); 
+    exit(0);
+  });
 }
 
 log( String s ) {
