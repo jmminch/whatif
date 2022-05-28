@@ -15,7 +15,10 @@ RUN dart compile exe bin/server.dart -o bin/server
 FROM scratch
 COPY --from=build /runtime/ /
 COPY --from=build /app/bin/server /app/bin/
+COPY --from=build /app/web/ /app/web/
+COPY --from=build /app/data/questions.json /app/data/
 
 # Start server.
-EXPOSE 8080
+EXPOSE 36912
+WORKDIR /app
 CMD ["/app/bin/server"]
