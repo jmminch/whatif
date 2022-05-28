@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'dart:math';
 
 class Question {
-  String question;
+  String question = "";
   List<String> answers = <String>[];
 
   Question( );
@@ -39,7 +39,7 @@ class Question {
  * the master list. */
 class QuestionList {
   List<Question> list = <Question>[];
-  QuestionList master;
+  QuestionList? master;
   bool shuffle = true;
 
   QuestionList( );
@@ -51,14 +51,15 @@ class QuestionList {
     return q;
   }
 
-  QuestionList.fromMaster( this.master, { this.shuffle = true } ) {
-    list = master.list.toList();
+  QuestionList.fromMaster( QuestionList m, { this.shuffle = true } ) {
+    master = m;
+    list = m.list.toList();
     if(shuffle) list.shuffle();
   }
 
   Question nextQuestion( ) {
     if(list.isEmpty) {
-      list = master.list.toList();
+      list = master!.list.toList();
       list.shuffle();
     }
 
