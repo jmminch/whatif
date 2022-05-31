@@ -2,9 +2,7 @@ import 'dart:io';
 
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
-import 'package:shelf_router/shelf_router.dart';
 import 'package:shelf_web_socket/shelf_web_socket.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:shelf_static/shelf_static.dart';
 
 import 'game.dart';
@@ -20,8 +18,14 @@ void main(List<String> args) async {
           .add(staticHandler)
           .handler;
 
-  // Use any available host or container IP (usually `0.0.0.0`).
-  final ip = InternetAddress.anyIPv4;
+  // Use the LISTENIP environment variable, or fallback on the loopback
+  // address.
+  late InternetAddress ip;
+  if(Platform.environment['LISTENIP'] != null) {
+    ip = InternetAddress(Platform.environment['LISTENIP']!);
+  } else {
+    ip = InternetAddress.loopbackIPv4;
+  }
 
   // Configure a pipeline that logs requests.
   final pipeline = Pipeline().addMiddleware(logRequests()).addHandler(handler);
@@ -39,5 +43,5 @@ void main(List<String> args) async {
 }
 
 log( String s ) {
-  print(DateTime.now().toString() + " " + s);
+  print("${DateTime.now().toString()} $s");
 }

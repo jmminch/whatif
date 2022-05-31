@@ -21,4 +21,5 @@ COPY --from=build /app/data/questions.json /app/data/
 # Start server.
 EXPOSE 36912
 WORKDIR /app
+ENV LISTENIP=0.0.0.0
 CMD ["/app/bin/server"]

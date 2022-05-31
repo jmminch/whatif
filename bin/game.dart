@@ -1,7 +1,6 @@
 /* game.dart */
 
 import 'dart:convert';
-import 'dart:math';
 import 'dart:async';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
@@ -50,8 +49,7 @@ class GameServer {
         return;
       }
 
-      if(!(message is Map) ||
-         !(message["event"] is String)) {
+      if(message is! Map || message["event"] is! String) {
         sendMsg(socket, "error", "malformed message.");
         return;
       }
@@ -146,7 +144,7 @@ class GameRoom {
   Timer? stateTimer;
 
   GameRoom( this.game, this.name ) {
-    if(this.name.startsWith("_DEBUG")) {
+    if(name.startsWith("_DEBUG")) {
       /* In the debug room, return questions in reverse order without
        * shuffling.  This makes it easy to test newly-added questions. */
       questions = QuestionList.fromMaster(game.questionList,
@@ -163,7 +161,7 @@ class GameRoom {
       p.room = this;
 
       /* If there is currently no host, then make this player the host. */
-      if(host == null) host = p;
+      host ??= p;
 
       players[playerName] = p;
     }
@@ -181,9 +179,7 @@ class GameRoom {
     if(!players.values.fold(true, (t, p) => (t && p.state ==
           PlayerState.disconnected))) return false;
     /* Return true if the host has been disconnected for more than 5 minutes */
-    if(DateTime.now().difference(host!.disconnectTime).inMinutes >= 5) 
-      return true;
-    return false;
+    return (DateTime.now().difference(host!.disconnectTime).inMinutes >= 5);
   }
 
   /* The following functions are handlers for the various messages that the
@@ -245,7 +241,7 @@ class GameRoom {
   doEndGame( Player p ) {
     if(p != host) return;
 
-    log("Ending game for room ${name} by host request.");
+    log("Ending game for room $name by host request.");
 
     changeState(GameState.Lobby);
   }
@@ -308,6 +304,9 @@ class GameRoom {
 
       case GameState.Final:
         return buildFinalStateMsg();
+      
+      default:
+        break;
     }
 
     return { };
@@ -482,10 +481,10 @@ class GameRoom {
         }
 
         /* Set scores to 0, etc. */
-        players.values.forEach( (p) { 
+        for(var p in players.values) {
           p.score = 0; 
           p.questionsAnswered = 0;
-        } );
+        }
         questionLimit = 12;
         roundQuestionLimit = questionLimit;
         totalQuestions = 0;
@@ -500,8 +499,7 @@ class GameRoom {
 
       case GameState.Countdown:
         countdownTime = DateTime.now().add(Duration(seconds: 3));
-        new Timer(new Duration(seconds: 3),
-                  () => changeState(GameState.Question));
+        Timer(Duration(seconds: 3), () => changeState(GameState.Question));
         broadcastState();
         break;
 
@@ -624,8 +622,7 @@ class GameRoom {
       player.roundScore = 0;
 
       /* Normalize bad values for the answer ID. */
-      if(player.answerId == null ||
-         player.answerId < 0 ||
+      if(player.answerId < 0 ||
          player.answerId >= votes.length) player.answerId = -1;
 
       if(player.answerId != -1) {
@@ -659,8 +656,10 @@ class GameRoom {
       }
     }
 
-    /* Max could be 0 if nobody voted.  Nobody gets points. */
-    if(max == 0) return;
+    /* Max could be 0 if nobody voted.  Nobody gets points.
+     * Don't award points if everybody picked a different
+     * answer (max = 1). */
+    if(max <= 1) return;
 
     /* Set the score that players that chose a winning answer will get.
      * 1000 for a unique answer; 500 for a 2-way tie; 250 for more ties. */
@@ -675,22 +674,17 @@ class GameRoom {
 
     /* Set the round score and update total score for all players. */
     for(var player in players.values) {
-      if(max <= 1) {
-        /* no points if everyone guesses a different answer. */
+      if(player.answerId >= 0 &&
+         player.answerId < votes.length &&
+         votes[player.answerId] == max) {
+        /* Winning answer */
+        player.roundScore = roundScore;
       } else {
-        if(player.answerId != null &&
-           player.answerId >= 0 &&
-           player.answerId < votes.length &&
-           votes[player.answerId] == max) {
-          /* Winning answer */
-          player.roundScore = roundScore;
-        } else {
-          /* Losing answer. */
-          player.roundScore = 0;
+        /* Losing answer. */
+        player.roundScore = 0;
 
-          /* 500 point penalty for choosing wrong if you were the target. */
-          if(player == currentTarget) player.roundScore -= 500;
-        }
+        /* 500 point penalty for choosing wrong if you were the target. */
+        if(player == currentTarget) player.roundScore -= 500;
       }
 
       player.score += player.roundScore;
@@ -756,6 +750,8 @@ class GameRoom {
           break;
         case GameState.Final:
           doCompleteFinal(p);
+          break;
+        default:
           break;
       }
     }
@@ -919,6 +915,6 @@ String sanitizeString( str ) {
   /* Get rid of HTML special chars. */
   s = s.replaceAll(RegExp(r"[\x22\x26\x27\x3c\x3e]"), '');
   s = s.trim();
-  if(s.length < 1) return "";
+  if(s.isEmpty) return "";
   return s;
 }
