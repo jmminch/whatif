@@ -798,7 +798,8 @@ class Player {
   connect( WebSocketChannel s ) {
     /* Disconnect any existing socket. */
     if(socket != null) {
-      sendMsg("error", "disconnected");
+      /* Tell the client using this socket not to reconnect. */
+      sendMsg("disconnect", "disconnect");
       socket!.sink.close();
     }
 

@@ -6,12 +6,19 @@ var countdownTimer;
 var countdownTime;
 var answerTimer;
 var curScreen = "login";
+var reconnect = false;
 
-document.getElementById("login-button").onclick = function (event) {
+document.getElementById("login-button").onclick =
+        function (event) { connect(); }
+
+function connect( ) {
   // Close existing web socket.
   if(ws) {
     ws.close();
   }
+
+  // Turn off reconnection until we get a message from the server.
+  reconnect = false;
 
   // Store name and room in local storage.
   localStorage.setItem('name', document.getElementById("login-name").value);
@@ -32,8 +39,15 @@ document.getElementById("login-button").onclick = function (event) {
 
   ws.onclose = function(event) {
     ws = null;
-    changeScreen("login");
-    alert("Remote disconnected.");
+ 
+    if(reconnect) {
+      console.log("socket unexpectedly closed; reconnecting.");
+
+      connect();
+    } else {
+      changeScreen("login");
+      alert("Remote disconnected.");
+    }
   }
 
   ws.addEventListener("message", handleWsMessage);
@@ -98,6 +112,7 @@ document.getElementById("menu-endgame").onclick = function (event) {
 };
 
 document.getElementById("menu-logout").onclick = function (event) {
+  reconnect = false;
   closeMenu();
   if(ws) {
     var msg = { event: "logout" };
@@ -157,6 +172,9 @@ document.onclick = function(event) {
 
 /* Handle message from the server. */
 function handleWsMessage(event) {
+  /* When we get a message from the server, turn on reconnection handling. */
+  reconnect = true;
+
   var obj = JSON.parse(event.data);
 
   console.log("Handling event: " + event.data);
@@ -178,6 +196,10 @@ function handleWsMessage(event) {
     } else if(obj.eventName == "ping") {
       var msg = { event: "pong" };
       ws.send(JSON.stringify(msg));
+    } else if(obj.eventName == "disconnect") {
+      // Server explicitly telling us to disconnect; don't reconnect when
+      // the socket is closed.
+      reconnect = false;
     }
   }
 }
