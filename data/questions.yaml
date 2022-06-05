@@ -1817,7 +1817,7 @@
   answers:
     - "1"
     - "90210"
-    - "3.14159265"
+    - "π"
     - "867-5309"
     - "411"
     - "4:20"
@@ -1863,3 +1863,12 @@
     - Flight
     - Time travel
     - Super speed
+
+- question: If ___ kept an exotic pet, which would it be?
+  answers:
+    - Tiger
+    - Chimpanzee
+    - Kangaroo
+    - Grizzly bear
+    - King cobra
+    - Peacock
