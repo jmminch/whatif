@@ -15,7 +15,7 @@ The game server is written in Google's [Dart](https://www.dartlang.org)
 language.  You will need the Dart SDK to run the code.
 
 After downloading the code and running `pub get`, the server can
-be started with `dart bin/main.dart`.  It will serve the game at
+be started with `dart bin/server.dart`.  It will serve the game at
 127.0.0.1 port 36912 by default.
 
 There is also a Dockerfile to create a containerized image; a precompiled

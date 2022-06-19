@@ -1,6 +1,9 @@
-# This file is pre-processed by the convert.sh script into JSON, which
-# is the format accepted by whatif.
-# Note that this file must be encoded as utf-8
+# This file must be converted to JSON for use by the server.  The Makefile
+# in the root-level directory has a rule to rebuild the question list.
+#
+# Note that this file must be encoded as utf-8, and the output JSON must
+# also be utf-8.  Some conversion tools do not do this correctly;
+# yaml2json (https://github.com/bronze1man/yaml2json) is one that does.
 
 - question: If ___ were a color, which color would they be?
   answers:
@@ -1959,7 +1962,6 @@
     - Donkey Kong
     - King Bowser
     - Princess Peach
-    - Link
 
 - question: If ___ was a 21st century movie, which would they be?
   answers:
