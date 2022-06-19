@@ -192,8 +192,10 @@ class GameRoom {
 
   doStartGame( Player p ) {
     /* Whoever selects "start game" becomes the host. */
-    host = p;
-    changeState(GameState.GameSetup);
+    if(state == GameState.Lobby) {
+      host = p;
+      changeState(GameState.GameSetup);
+    }
   }
 
   doCompleteResults( Player p ) {
