@@ -41,6 +41,7 @@ class QuestionList {
   List<Question> list = <Question>[];
   QuestionList? master;
   bool shuffle = true;
+  int length = 0;
 
   QuestionList( );
 
@@ -51,15 +52,22 @@ class QuestionList {
     return q;
   }
 
-  QuestionList.fromMaster( QuestionList m, { this.shuffle = true } ) {
+  QuestionList.fromMaster( QuestionList m,
+                           { this.shuffle = true, this.length = 0 } ) {
     master = m;
     list = m.list.toList();
+    if(length > 0 && length < list.length) {
+      list.removeRange(0, list.length - length);
+    }
     if(shuffle) list.shuffle();
   }
 
   Question nextQuestion( ) {
     if(list.isEmpty) {
       list = master!.list.toList();
+      if(length > 0 && length < list.length) {
+        list.removeRange(0, list.length - length);
+      }
       list.shuffle();
     }
 

@@ -59,6 +59,19 @@ class GameServer {
       if(message["event"] == "login") {
         String name = sanitizeString(message["name"]);
         String room = sanitizeString(message["room"]);
+        int questions = -1;
+
+        /* This is super hackey. If the room code given is of the form
+         * <name>:<number>, then we will set an indication to only use the
+         * last 'n' questions in the question list. */
+        if(room.contains(':')) {
+          var m = RegExp(r"^(.+):(\d+)$").firstMatch(room);
+          if(m != null) {
+            room = m.group(1) as String;
+            questions = int.parse(m.group(2) as String);
+          }
+        }
+
         if(name == "" || room == "") {
           sendMsg(socket, "error", "name or room is invalid.");
           return;
@@ -76,6 +89,16 @@ class GameServer {
         p.connect(socket);
 
         log("Login for $name");
+
+        if(questions > 0) {
+          /* User gave a question limit; re-initialize the room question
+           * list with a new truncated list. */
+          if(r.state == GameState.Lobby) {
+            r.questions = QuestionList.fromMaster(questionList,
+                                                  length: questions);
+            log("Initialized list with length $questions");
+          }
+        }
       } else {
         /* Defer to player message handler. */
         p?.handleMessage(message);
